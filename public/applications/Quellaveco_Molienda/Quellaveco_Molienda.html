@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<!-- __V3D_PUZZLES__ - enable Puzzles button in the App Manager -->
+
+<html lang="en">
+  <head>
+    <title>Paseo Virtual</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
+    />
+
+    <script src="webxr-polyfill.js"></script>
+    <script>
+      var polyfill = new WebXRPolyfill();
+    </script>
+
+    <script src="v3d.js"></script>
+    <script src="Quellaveco_Molienda.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="Quellaveco_Molienda.css" />
+
+
+    <link rel='stylesheet'
+      href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css'>
+    <link rel="stylesheet" type="text/css" href="../styles.css" />
+
+  </head>
+
+  <body>
+    <div id="v3d-container">
+
+      <div class="button-iniciar" id="btn_empezar_recorrido">
+       Iniciar recorrido
+      </div>
+
+      <div class="button-audio" id="btn_mute_audio" style="display: none;">
+        <i class="fa-solid fa-volume-xmark"></i>
+      </div>
+      <div class="button-audio" id="btn_unmute_audio" style="display: none;">
+        <i class="fa-solid fa-volume-high"></i>
+      </div>
+      <div class="popup" id="audio-indicacion" style="display: none;">
+        Presione aquí para reproducir el audio de bienvenida y comenzar el recorrido.
+      </div>
+      <div class="contenedor-invisible" id="invisibleContainer"  style="display: none;" >
+      </div>
+
+    </div>
+  </body>
+</html>
