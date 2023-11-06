@@ -191,6 +191,10 @@ self.addEventListener('install', event => {
         '/manifest.json',
         '/logo192.png',
         '/logo512.png',
+        // application assets
+        '/assets/imagenes/logo-quellaveco.png',
+        '/assets/imagenes/logo-eduverso.png',
+        '/assets/imagenes/logo-eduverso-blanco.png',
         '/applications/images/advertencia.png',
         '/applications/images/click-izquierdo.png',
         '/applications/images/derecho.png',
