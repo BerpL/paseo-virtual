@@ -15,6 +15,7 @@ import { registerRoute } from 'workbox-routing';
 import { StaleWhileRevalidate, CacheFirst } from 'workbox-strategies';
 
 declare const self: ServiceWorkerGlobalScope;
+const CACHE_NAME = 'my-cache-v1';
 
 clientsClaim();
 
@@ -176,3 +177,31 @@ self.addEventListener('message', (event) => {
   }
 });
 
+
+self.addEventListener('install', event => {
+  event.waitUntil(
+    caches.open(CACHE_NAME).then(cache => {
+      return cache.addAll([
+        // 0000General
+        '/applications/0000General/0000General.html',
+        '/applications/0000General/0000General.css',
+        '/applications/0000General/0000General.js',
+        // 2600Chancado01
+        '/applications/2600Chancado01/2600Chancado01.html',
+        '/applications/2600Chancado01/2600Chancado01.css',
+        '/applications/2600Chancado01/2600Chancado01.js',
+        '/applications/2600Chancado01/2600Chancado01.bin.xz',
+        '/applications/2600Chancado01/2600Chancado01.gltf',
+        '/applications/2600Chancado01/2600Chancado01.gltf.xz',
+      ]);
+    })
+  );
+});
+
+self.addEventListener('fetch', event => {
+  event.respondWith(
+    caches.match(event.request).then(response => {
+      return response || fetch(event.request);
+    })
+  );
+});
