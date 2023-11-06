@@ -179,8 +179,10 @@ self.addEventListener('message', (event) => {
 
 
 self.addEventListener('install', event => {
+  console.log('Service Worker instalado');
   event.waitUntil(
     caches.open(CACHE_NAME).then(cache => {
+      console.log('Caché abierta correctamente');
       return cache.addAll([
         // root
         '/',
@@ -284,19 +286,14 @@ self.addEventListener('install', event => {
         '/applications/5000Puerto/5000Puerto.v3d.js',
         '/applications/5000Puerto/5000Puerto.visual_logic.js',
       ]);
-    })
-  );
-});
-
-self.addEventListener('fetch', event => {
-  event.respondWith(
-    caches.match(event.request).then(response => {
-      return response || fetch(event.request);
+    }).catch(error => {
+      console.error('Error al abrir la caché:', error);
     })
   );
 });
 
 self.addEventListener('activate', event => {
+  console.log('Service Worker activado');
   event.waitUntil(
     caches.keys().then(cacheNames => {
       // Elimina las cachés antiguas (excepto la caché actual)
@@ -310,3 +307,36 @@ self.addEventListener('activate', event => {
     })
   );
 });
+
+self.addEventListener('fetch', event => {
+  console.log('Solicitud fetch interceptada:', event.request.url);
+  event.respondWith(handleFetch(event.request));
+});
+
+async function handleFetch(request:any) {
+  try {
+    // Intenta obtener la respuesta desde la caché
+    const cachedResponse = await caches.match(request);
+
+    // Si la respuesta está en caché, devuélvela
+    if (cachedResponse) {
+      console.log('Recurso encontrado en caché:', request.url);
+      return cachedResponse;
+    }
+
+    // Si la respuesta no está en caché, haz la solicitud a la red
+    const networkResponse = await fetch(request);
+
+    // Abre el caché y almacena la respuesta de la red para futuras solicitudes
+    const cache = await caches.open(CACHE_NAME);
+    cache.put(request, networkResponse.clone());
+    console.log('Recurso no encontrado en caché, solicitando a la red:', request.url);
+    // Devuelve la respuesta de la red
+    return networkResponse;
+  } catch (error) {
+    // Si hay un error al recuperar recursos, puedes manejarlo aquí
+    console.error('Error en la solicitud:', error);
+    // Devuelve una respuesta predeterminada o una página de error personalizada si es necesario
+    return new Response('Error: Recurso no disponible', { status: 500, statusText: 'Internal Server Error' });
+  }
+}
