@@ -15,7 +15,7 @@ import { registerRoute } from 'workbox-routing';
 import { StaleWhileRevalidate, CacheFirst } from 'workbox-strategies';
 
 declare const self: ServiceWorkerGlobalScope;
-const CACHE_NAME = 'my-cache-v1';
+const CACHE_NAME = 'paseos-v2';
 
 clientsClaim();
 
@@ -183,6 +183,12 @@ self.addEventListener('install', event => {
     caches.open(CACHE_NAME).then(cache => {
       return cache.addAll([
         // root
+        '/',
+        '/index.html',
+        '/favicon.ico',
+        '/manifest.json',
+        '/logo192.png',
+        '/logo512.png',
         '/applications/images/advertencia.png',
         '/applications/images/click-izquierdo.png',
         '/applications/images/derecho.png',
@@ -233,6 +239,50 @@ self.addEventListener('install', event => {
         '/applications/2600Chancado01/2600Chancado01.gltf.xz',
         '/applications/2600Chancado01/2600Chancado01.v3d.js',
         '/applications/2600Chancado01/2600Chancado01.visual_logic.js',
+        // 3100molienda
+        '/applications/3100molienda/3100molienda.html',
+        '/applications/3100molienda/3100molienda.css',
+        '/applications/3100molienda/3100molienda.js',
+        '/applications/3100molienda/3100molienda.bin.xz',
+        '/applications/3100molienda/3100molienda.bin',
+        '/applications/3100molienda/3100molienda.blend',
+        '/applications/3100molienda/3100molienda.gltf',
+        '/applications/3100molienda/3100molienda.gltf.xz',
+        '/applications/3100molienda/3100molienda.v3d.js',
+        '/applications/3100molienda/3100molienda.visual_logic.js',
+        // 3300Flotacion
+        '/applications/3300Flotacion/3300Flotacion.html',
+        '/applications/3300Flotacion/3300Flotacion.css',
+        '/applications/3300Flotacion/3300Flotacion.js',
+        '/applications/3300Flotacion/3300Flotacion.bin.xz',
+        '/applications/3300Flotacion/3300Flotacion.bin',
+        '/applications/3300Flotacion/3300Flotacion.blend',
+        '/applications/3300Flotacion/3300Flotacion.gltf',
+        '/applications/3300Flotacion/3300Flotacion.gltf.xz',
+        '/applications/3300Flotacion/3300Flotacion.v3d.js',
+        '/applications/3300Flotacion/3300Flotacion.visual_logic.js',
+        // 4000Relaves
+        '/applications/4000Relaves/4000Relaves.html',
+        '/applications/4000Relaves/4000Relaves.css',
+        '/applications/4000Relaves/4000Relaves.js',
+        '/applications/4000Relaves/4000Relaves.bin.xz',
+        '/applications/4000Relaves/4000Relaves.bin',
+        '/applications/4000Relaves/4000Relaves.blend',
+        '/applications/4000Relaves/4000Relaves.gltf',
+        '/applications/4000Relaves/4000Relaves.gltf.xz',
+        '/applications/4000Relaves/4000Relaves.v3d.js',
+        '/applications/4000Relaves/4000Relaves.visual_logic.js',
+        // 5000Puerto
+        '/applications/5000Puerto/5000Puerto.html',
+        '/applications/5000Puerto/5000Puerto.css',
+        '/applications/5000Puerto/5000Puerto.js',
+        '/applications/5000Puerto/5000Puerto.bin.xz',
+        '/applications/5000Puerto/5000Puerto.bin',
+        '/applications/5000Puerto/5000Puerto.blend',
+        '/applications/5000Puerto/5000Puerto.gltf',
+        '/applications/5000Puerto/5000Puerto.gltf.xz',
+        '/applications/5000Puerto/5000Puerto.v3d.js',
+        '/applications/5000Puerto/5000Puerto.visual_logic.js',
       ]);
     })
   );
@@ -242,6 +292,21 @@ self.addEventListener('fetch', event => {
   event.respondWith(
     caches.match(event.request).then(response => {
       return response || fetch(event.request);
+    })
+  );
+});
+
+self.addEventListener('activate', event => {
+  event.waitUntil(
+    caches.keys().then(cacheNames => {
+      // Elimina las cachés antiguas (excepto la caché actual)
+      return Promise.all(
+        cacheNames.filter(cacheName => {
+          return cacheName !== CACHE_NAME;
+        }).map(cacheName => {
+          return caches.delete(cacheName);
+        })
+      );
     })
   );
 });
