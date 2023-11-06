@@ -12,7 +12,7 @@ import { clientsClaim } from 'workbox-core';
 import { ExpirationPlugin } from 'workbox-expiration';
 import { precacheAndRoute, createHandlerBoundToURL } from 'workbox-precaching';
 import { registerRoute } from 'workbox-routing';
-import { StaleWhileRevalidate } from 'workbox-strategies';
+import { StaleWhileRevalidate, CacheFirst } from 'workbox-strategies';
 
 declare const self: ServiceWorkerGlobalScope;
 
@@ -148,6 +148,21 @@ registerRoute(
     plugins: [
       // Ensure that once this runtime cache reaches a maximum size the
       // least-recently used images are removed.
+      new ExpirationPlugin({ maxEntries: 50 }),
+    ],
+  })
+);
+
+// Cache all files in the public directory
+registerRoute(
+  // Match all files in the public directory
+  ({ request }) => request.url.startsWith(self.location.origin + '/public/applications/'),
+  // Use CacheFirst strategy to cache files and serve them from cache if available
+  new CacheFirst({
+    cacheName: 'PublicFiles',
+    plugins: [
+      // Ensure that once this runtime cache reaches a maximum size the
+      // least-recently used files are removed.
       new ExpirationPlugin({ maxEntries: 50 }),
     ],
   })
