@@ -125,21 +125,25 @@ registerRoute(
   })
 );
 
-registerRoute(
-  // Match specific audio file paths
-  ({ url }) => url.origin === self.location.origin &&
-    (url.pathname.endsWith('/bienvenido.mp3') ||
-      url.pathname.endsWith('/bienvenido-completo.mp3') ||
-      url.pathname.endsWith('/bienvenido-2.mp3')),
+const audioPaths: string[] = [
+  '/applications/audios/bienvenido.mp3',
+  '/applications/audios/bienvenido-completo.mp3',
+  '/applications/audios/bienvenido-2.mp3',
+];
 
-  // Use the same caching strategy
-  new StaleWhileRevalidate({
-    cacheName: 'Audios2',
-    plugins: [
-      new ExpirationPlugin({ maxEntries: 50 }),
-    ],
-  })
-);
+audioPaths.forEach((audioPath: string) => {
+  registerRoute(
+    ({ url }: { url: URL }) => url.href === audioPath,
+    new StaleWhileRevalidate({
+      cacheName: 'Audios2',
+      plugins: [
+        // Ensure that once this runtime cache reaches a maximum size the
+        // least-recently used images are removed.
+        new ExpirationPlugin({ maxEntries: 50 }),
+      ],
+    })
+  );
+});
 
 registerRoute(
   // Add in any other file extensions or routing criteria as needed.
