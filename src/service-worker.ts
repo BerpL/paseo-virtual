@@ -28,57 +28,29 @@ precacheAndRoute(self.__WB_MANIFEST);
 // are fulfilled with your index.html shell. Learn more at
 // https://developers.google.com/web/fundamentals/architecture/app-shell
 const fileExtensionRegexp = new RegExp('/[^/?]+\\.[^/]+$');
-
-// Cache the specific resources using CacheFirst strategy
 registerRoute(
+  // Return false to exempt requests from being fulfilled by index.html.
   ({ request, url }: { request: Request; url: URL }) => {
+    // If this isn't a navigation, skip.
     if (request.mode !== 'navigate') {
       return false;
     }
 
+    // If this is a URL that starts with /_, skip.
     if (url.pathname.startsWith('/_')) {
       return false;
     }
 
+    // If this looks like a URL for a resource, because it contains
+    // a file extension, skip.
     if (url.pathname.match(fileExtensionRegexp)) {
       return false;
     }
 
-    // Cache the specific URLs with CacheFirst strategy
-    if (
-      url.href.includes('/applications/') &&
-      url.href.endsWith('.html')
-    ) {
-      return true;
-    }
-
-    return false;
-  },
-  new StaleWhileRevalidate({
-    cacheName: 'app-shell-cache'
-  })
-);
-
-// Set up App Shell-style routing for index.html
-registerRoute(
-  ({ request, url }: { request: Request; url: URL }) => {
-    if (request.mode !== 'navigate') {
-      return false;
-    }
-
-    if (url.pathname.startsWith('/_')) {
-      return false;
-    }
-
-    if (url.pathname.match(fileExtensionRegexp)) {
-      return false;
-    }
-
+    // Return true to signal that we want to use the handler.
     return true;
   },
-  new StaleWhileRevalidate({
-    cacheName: 'application-cache'
-  })
+  createHandlerBoundToURL(process.env.PUBLIC_URL + '/index.html')
 );
 
 // An example runtime caching route for requests that aren't handled by the
@@ -154,14 +126,16 @@ registerRoute(
 );
 
 registerRoute(
-  // Add in any other file extensions or routing criteria as needed.
-  ({ url }) => url.origin === self.location.origin && url.pathname.endsWith('.mp3'),
-  // Customize this strategy as needed, e.g., by changing to CacheFirst.
+  // Match specific audio file paths
+  ({ url }) => url.origin === self.location.origin &&
+    (url.pathname.endsWith('/bienvenido.mp3') ||
+      url.pathname.endsWith('/bienvenido-completo.mp3') ||
+      url.pathname.endsWith('/bienvenido-2.mp3')),
+
+  // Use the same caching strategy
   new StaleWhileRevalidate({
     cacheName: 'Audios2',
     plugins: [
-      // Ensure that once this runtime cache reaches a maximum size the
-      // least-recently used images are removed.
       new ExpirationPlugin({ maxEntries: 50 }),
     ],
   })
@@ -182,7 +156,7 @@ registerRoute(
 );
 
 // Cache all files in the public directory
-registerRoute(
+/* registerRoute(
   // Match all files in the public directory
   ({ request }) => request.url.startsWith(self.location.origin + '/public/applications/'),
   // Use CacheFirst strategy to cache files and serve them from cache if available
@@ -194,7 +168,7 @@ registerRoute(
       new ExpirationPlugin({ maxEntries: 100 }),
     ],
   })
-);
+); */
 
 // This allows the web app to trigger skipWaiting via
 // registration.waiting.postMessage({type: 'SKIP_WAITING'})
