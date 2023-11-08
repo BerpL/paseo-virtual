@@ -29,10 +29,11 @@ precacheAndRoute(self.__WB_MANIFEST);
 // https://developers.google.com/web/fundamentals/architecture/app-shell
 const fileExtensionRegexp = new RegExp('/[^/?]+\\.[^/]+$');
 
+// Cache the specific resources using CacheFirst strategy
 registerRoute(
   ({ request, url }: { request: Request; url: URL }) => {
     if (request.mode !== 'navigate') {
-      return true; // Cachear todas las solicitudes que no sean de navegación
+      return false;
     }
 
     if (url.pathname.startsWith('/_')) {
@@ -40,16 +41,22 @@ registerRoute(
     }
 
     if (url.pathname.match(fileExtensionRegexp)) {
-      const extension = url.pathname.split('.').pop();
-      // Cachear archivos MP3, JPG, PNG y HTML con CacheFirst strategy
-      if (extension === 'css' ||extension === 'mp3' || extension === 'jpg' || extension === 'jpeg' || extension === 'png' || extension === 'html') {
-        return true;
-      }
+      return false;
+    }
+
+    // Cache the specific URLs with CacheFirst strategy
+    if (
+      url.href.includes('/applications/') &&
+      url.href.endsWith('.html')
+    ) {
+      return true;
     }
 
     return false;
   },
-  new CacheFirst()
+  new StaleWhileRevalidate({
+    cacheName: 'app-shell-cache'
+  })
 );
 
 // Set up App Shell-style routing for index.html
@@ -70,7 +77,7 @@ registerRoute(
     return true;
   },
   new StaleWhileRevalidate({
-    cacheName: 'app-shell-cache'
+    cacheName: 'application-cache'
   })
 );
 
