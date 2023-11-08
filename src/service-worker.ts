@@ -15,7 +15,6 @@ import { registerRoute } from 'workbox-routing';
 import { StaleWhileRevalidate, CacheFirst } from 'workbox-strategies';
 
 declare const self: ServiceWorkerGlobalScope;
-const CACHE_NAME = 'paseos-v3';
 
 clientsClaim();
 
@@ -29,29 +28,50 @@ precacheAndRoute(self.__WB_MANIFEST);
 // are fulfilled with your index.html shell. Learn more at
 // https://developers.google.com/web/fundamentals/architecture/app-shell
 const fileExtensionRegexp = new RegExp('/[^/?]+\\.[^/]+$');
+
 registerRoute(
-  // Return false to exempt requests from being fulfilled by index.html.
   ({ request, url }: { request: Request; url: URL }) => {
-    // If this isn't a navigation, skip.
     if (request.mode !== 'navigate') {
-      return false;
+      return true; // Cachear todas las solicitudes que no sean de navegación
     }
 
-    // If this is a URL that starts with /_, skip.
     if (url.pathname.startsWith('/_')) {
       return false;
     }
 
-    // If this looks like a URL for a resource, because it contains
-    // a file extension, skip.
+    if (url.pathname.match(fileExtensionRegexp)) {
+      const extension = url.pathname.split('.').pop();
+      // Cachear archivos MP3, JPG, PNG y HTML con CacheFirst strategy
+      if (extension === 'css' ||extension === 'mp3' || extension === 'jpg' || extension === 'jpeg' || extension === 'png' || extension === 'html') {
+        return true;
+      }
+    }
+
+    return false;
+  },
+  new CacheFirst()
+);
+
+// Set up App Shell-style routing for index.html
+registerRoute(
+  ({ request, url }: { request: Request; url: URL }) => {
+    if (request.mode !== 'navigate') {
+      return false;
+    }
+
+    if (url.pathname.startsWith('/_')) {
+      return false;
+    }
+
     if (url.pathname.match(fileExtensionRegexp)) {
       return false;
     }
 
-    // Return true to signal that we want to use the handler.
     return true;
   },
-  createHandlerBoundToURL(process.env.PUBLIC_URL + '/index.html')
+  new StaleWhileRevalidate({
+    cacheName: 'app-shell-cache'
+  })
 );
 
 // An example runtime caching route for requests that aren't handled by the
@@ -159,12 +179,12 @@ registerRoute(
   // Match all files in the public directory
   ({ request }) => request.url.startsWith(self.location.origin + '/public/applications/'),
   // Use CacheFirst strategy to cache files and serve them from cache if available
-  new CacheFirst({
+  new StaleWhileRevalidate({
     cacheName: 'PublicFiles2',
     plugins: [
       // Ensure that once this runtime cache reaches a maximum size the
       // least-recently used files are removed.
-      new ExpirationPlugin({ maxEntries: 50 }),
+      new ExpirationPlugin({ maxEntries: 100 }),
     ],
   })
 );

@@ -44,6 +44,7 @@ const ModelViewer: React.FC = () => {
       setDisplaySubAreas({ display: "" });
       setCanRenderHamburger(true);
       if (item.vergeUrl) {
+        console.log(item.vergeUrl)
         setVergeUrl(item.vergeUrl);
       }
       setTemp(2);
