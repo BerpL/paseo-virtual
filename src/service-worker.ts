@@ -23,7 +23,11 @@ clientsClaim();
 // This variable must be present somewhere in your service worker file,
 // even if you decide not to use precaching. See https://cra.link/PWA
 precacheAndRoute(self.__WB_MANIFEST);
-
+precacheAndRoute([
+  {url: '/applications/audios/bienvenido.mp3', revision: null},
+  {url: '/applications/audios/bienvenido-completo.mp3', revision: null},
+  {url: '/applications/audios/bienvenido-2.mp3', revision: null},
+]);
 // Set up App Shell-style routing, so that all navigation requests
 // are fulfilled with your index.html shell. Learn more at
 // https://developers.google.com/web/fundamentals/architecture/app-shell
@@ -129,7 +133,7 @@ registerRoute(
   // Add in any other file extensions or routing criteria as needed.
   ({ url }) => url.origin === self.location.origin && url.pathname.endsWith('.mp3'),
   // Customize this strategy as needed, e.g., by changing to CacheFirst.
-  new StaleWhileRevalidate({
+  new CacheFirst({
     cacheName: 'Audios2',
     plugins: [
       // Ensure that once this runtime cache reaches a maximum size the
