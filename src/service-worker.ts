@@ -15,7 +15,7 @@ import { registerRoute } from 'workbox-routing';
 import { StaleWhileRevalidate, CacheFirst } from 'workbox-strategies';
 
 declare const self: ServiceWorkerGlobalScope;
-const CACHE_NAME = 'paseos-v2';
+const CACHE_NAME = 'paseos-v3';
 
 clientsClaim();
 
@@ -61,7 +61,7 @@ registerRoute(
   ({ url }) => url.origin === self.location.origin && url.pathname.endsWith('.png'),
   // Customize this strategy as needed, e.g., by changing to CacheFirst.
   new StaleWhileRevalidate({
-    cacheName: 'images',
+    cacheName: 'images2',
     plugins: [
       // Ensure that once this runtime cache reaches a maximum size the
       // least-recently used images are removed.
@@ -75,7 +75,7 @@ registerRoute(
   ({ url }) => url.origin === self.location.origin && url.pathname.endsWith('.jpg'),
   // Customize this strategy as needed, e.g., by changing to CacheFirst.
   new StaleWhileRevalidate({
-    cacheName: 'imagesjpg',
+    cacheName: 'imagesjpg2',
     plugins: [
       // Ensure that once this runtime cache reaches a maximum size the
       // least-recently used images are removed.
@@ -89,7 +89,7 @@ registerRoute(
   ({ url }) => url.origin === self.location.origin && url.pathname.endsWith('.js'),
   // Customize this strategy as needed, e.g., by changing to CacheFirst.
   new StaleWhileRevalidate({
-    cacheName: 'scripts',
+    cacheName: 'scripts2',
     plugins: [
       // Ensure that once this runtime cache reaches a maximum size the
       // least-recently used images are removed.
@@ -103,7 +103,7 @@ registerRoute(
   ({ url }) => url.origin === self.location.origin && url.pathname.endsWith('.xz'),
   // Customize this strategy as needed, e.g., by changing to CacheFirst.
   new StaleWhileRevalidate({
-    cacheName: 'visual',
+    cacheName: 'visual2',
     plugins: [
       // Ensure that once this runtime cache reaches a maximum size the
       // least-recently used images are removed.
@@ -117,7 +117,7 @@ registerRoute(
   ({ url }) => url.origin === self.location.origin && url.pathname.endsWith('.html'),
   // Customize this strategy as needed, e.g., by changing to CacheFirst.
   new StaleWhileRevalidate({
-    cacheName: 'Hypertext',
+    cacheName: 'Hypertext2',
     plugins: [
       // Ensure that once this runtime cache reaches a maximum size the
       // least-recently used images are removed.
@@ -131,7 +131,7 @@ registerRoute(
   ({ url }) => url.origin === self.location.origin && url.pathname.endsWith('.mp3'),
   // Customize this strategy as needed, e.g., by changing to CacheFirst.
   new StaleWhileRevalidate({
-    cacheName: 'Audios',
+    cacheName: 'Audios2',
     plugins: [
       // Ensure that once this runtime cache reaches a maximum size the
       // least-recently used images are removed.
@@ -145,7 +145,7 @@ registerRoute(
   ({ url }) => url.origin === self.location.origin && url.pathname.endsWith('.css'),
   // Customize this strategy as needed, e.g., by changing to CacheFirst.
   new StaleWhileRevalidate({
-    cacheName: 'Styles',
+    cacheName: 'Styles2',
     plugins: [
       // Ensure that once this runtime cache reaches a maximum size the
       // least-recently used images are removed.
@@ -160,7 +160,7 @@ registerRoute(
   ({ request }) => request.url.startsWith(self.location.origin + '/public/applications/'),
   // Use CacheFirst strategy to cache files and serve them from cache if available
   new CacheFirst({
-    cacheName: 'PublicFiles',
+    cacheName: 'PublicFiles2',
     plugins: [
       // Ensure that once this runtime cache reaches a maximum size the
       // least-recently used files are removed.
@@ -178,7 +178,7 @@ self.addEventListener('message', (event) => {
 });
 
 
-self.addEventListener('install', event => {
+/* self.addEventListener('install', event => {
   console.log('Service Worker instalado');
   event.waitUntil(
     caches.open(CACHE_NAME).then(cache => {
@@ -343,4 +343,4 @@ async function handleFetch(request:any) {
     // Devuelve una respuesta predeterminada o una página de error personalizada si es necesario
     return new Response('Error: Recurso no disponible', { status: 500, statusText: 'Internal Server Error' });
   }
-}
+} */
