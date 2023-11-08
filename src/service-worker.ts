@@ -25,8 +25,6 @@ clientsClaim();
 precacheAndRoute(self.__WB_MANIFEST);
 const audioFiles = [
   // root
-  '/',
-  '/index.html',
   '/favicon.ico',
   '/manifest.json',
   '/logo192.png',
