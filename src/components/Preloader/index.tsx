@@ -8,7 +8,7 @@ function VergePreloader() {
   return (
     <Container id="preloader_screen">
       <div>
-      <img style={{color: 'white',
+      <img style={{
 fontSize: '34px',
 textTransform: 'uppercase',
 left: '41%',
