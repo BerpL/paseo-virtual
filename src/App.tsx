@@ -1,6 +1,6 @@
 import React, { useEffect, useState }from 'react';
 import GlobalStyles from './styles/GlobalStyles';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Home from './pages/Home';
 
 const App: React.FC = () => {
@@ -18,21 +18,11 @@ const App: React.FC = () => {
     setIsInIframe(inIframe());
   }, []); 
 
- /* const  rutaServidor="/paseoquellaveco";  // Produccion  */
-    const  rutaServidor="/"; // Develop  
+  /* const  rutaServidor="/paseo-virtual"; // Produccion */
+  const  rutaServidor="/"; // Develop
   return (
     <> 
-    <>
-    <Router>
-     <Routes>
-     {/*  */}
-       <Route path={rutaServidor} element={<Home />}/>
-      
-       </Routes>
-       <GlobalStyles />
-      </Router>
-  </>
-    {/* {isInIframe ? (
+    {isInIframe ? (
      <Router>
      <Switch>
      
@@ -57,9 +47,8 @@ const App: React.FC = () => {
     <GlobalStyles />
     </>
     
-    )}  */}
+    )} 
   </>
-  
    
   );
 }

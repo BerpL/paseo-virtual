@@ -6,7 +6,38 @@ import { Container } from './styles';
 
 export const Help: React.FC = () => {
   return (
-      <Container id="controles-container">
+      <Container>
+          <div className="help__title">
+              Controles: 
+          </div>
+          {/* <div className="help__control">
+              <div className="help__buttons">  
+                <div className="help__button"><ImArrowUp/></div>
+                <div className="help__button"><ImArrowDown/></div>
+                <div className="help__button"><ImArrowLeft/></div>
+                <div className="help__button"><ImArrowRight/></div>
+              </div>
+              <div className="help__text">
+                Movimiento
+              </div>
+          </div> */}
+          <div className="help__control">
+              <div className="help__buttons">  
+                <div className="help__button"><MdMouse/></div>
+              </div>
+              <div className="help__text">
+                Rotación
+              </div>
+          </div>
+          <div className="help__control">
+              <div className="help__buttons">  
+                <div className="help__button"><CgScrollV/></div>
+              </div>
+              <div className="help__text">
+                Zoom
+              </div>
+          </div>
+          
       </Container>
   );
 }

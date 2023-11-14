@@ -14,11 +14,11 @@ export const Container = styled.div`
   }
 
   .help__title{
-    font-size: 3vh;
-    margin-bottom: 1.5vh;
+    font-size: 1.5em;
+    margin-bottom: 12px;
     font-weight: 900;
     color: #fff;
-    text-shadow: 1px 1px 1px #000,0 1px 3px #000;
+    text-shadow: 1px 1px 1px #000, 0 1px 3px #000;
   }
 
 
@@ -27,7 +27,7 @@ export const Container = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin-bottom: 1.5vh;
+    margin-bottom: 10px;
   }
 
   .help__control .help__buttons{
@@ -41,28 +41,19 @@ export const Container = styled.div`
   .help__control .help__buttons .help__button{
     text-shadow: none;
     font-weight: 700;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
     display: flex;
     font-family: Cutive Mono,monospace;
-    padding: 1vh 1vh;
-    margin-right: 2vh;
-    min-width: 5vh;
+    padding: 2px 5px;
+    margin-right: 2px;
+    min-width: 10px;
     text-align: center;
-    margin-left: 2vh;
+    margin-left: 2px;
     background: #eff0f2;
-    box-shadow: inset 0 0 25px #e8e8e8,0 1px 0 #c3c3c3,0 2px 0 #c9c9c9,0 2px 3px #000;
+    box-shadow: inset 0 0 25px #e8e8e8, 0 1px 0 #c3c3c3, 0 2px 0 #c9c9c9, 0 2px 3px #000;
     color: #111;
     border-radius: 2px;
-    font-size: 2vh;
-    -webkit-align-items: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
+    font-size: 14px;
     align-items: center;
-    -webkit-box-pack: center;
-    -webkit-justify-content: center;
-    -ms-flex-pack: center;
     justify-content: center;
   }
   .help__control .help__text{

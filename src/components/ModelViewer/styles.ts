@@ -7,26 +7,26 @@ export const Container = styled.div`
   .viewer__title {
     color: white;
     position: absolute;
-    font-size: 6vh;
+    font-size: 34px;
     text-transform: uppercase;
     font-weight: 700;
-    left: 5vh;
-  /*   max-width: 50%; */
-    height: 15vh;
+    left: 30px;
+    max-width: 50%;
+    height: 88px;
     overflow: hidden;
-    top: 3vh;
+    top: 33px;
   }
 
   .viewer__line {
-    top: 12vh;
-    left: 5vh;
-    width: 40vh;
+    top: 118px;
+    left: 30px;
+    width: 265px;
     position: absolute;
     height: 2px;
     background-color: #fff;
   }
 
-  /* @media only screen and (max-width: 500px) {
+  @media only screen and (max-width: 500px) {
     .viewer__title {
       max-width: 100%;
       left: 0;
@@ -44,7 +44,7 @@ export const Container = styled.div`
     .viewer__line {
       top: 80px;
     }
-  } */
+  }
 
   .viewer__iframe__content {
     width: 100%;
@@ -61,7 +61,7 @@ export const Container = styled.div`
     left: 30px;
     height: 51px;
     display: flex;
-    background: #3f51b5;
+    background-color: rgba(63, 63, 63, 0.2);
     align-items: center;
     overflow: hidden;
     cursor: pointer;
@@ -69,12 +69,12 @@ export const Container = styled.div`
     transition: border 0.3s ease;
     transition: color 0.3s ease;
     user-select: none;
+    border: 2px solid #fff;
     outline: none;
     color: #fff;
     text-transform: uppercase;
     font-size: 14px;
     padding: 10px 10px 10px 0px;
-    transition: all ease 0.5s;
 
     svg {
       color: #fff;
@@ -84,7 +84,6 @@ export const Container = styled.div`
     }
 
     &:hover {
-      transform: scale(1.05);
       border: 2px solid rgb(10, 180, 255);
       color: rgb(10, 180, 255);
       svg {
@@ -105,28 +104,22 @@ export const Container = styled.div`
   }
 
   .viewer__home {
-    bottom: 5vh;
-    right: 27vh;
-    -webkit-box-pack: center;
-    -webkit-justify-content: center;
-    -ms-flex-pack: center;
+    bottom: 30px;
+    right: 195px;
     justify-content: center;
-    width: auto;
+    width: 155px;
     text-align: center;
-    padding: 3vh;
+    padding: 10px 10px 10px 10px;
     left: inherit;
   }
 
   .viewer__area {
-    bottom: 5vh;
-    right: 5vh;
-    -webkit-box-pack: center;
-    -webkit-justify-content: center;
-    -ms-flex-pack: center;
+    bottom: 30px;
+    right: 30px;
     justify-content: center;
-    width: 20vh;
+    width: 155px;
     text-align: center;
-    padding: 3vh;
+    padding: 10px 10px 10px 10px;
     left: inherit;
   }
 
@@ -136,14 +129,11 @@ export const Container = styled.div`
     }
     .viewer__home {
       width: 55px;
-      font-size: 10px;
-      right: 85px;
-      height: 31px;
+      right: 90px;
     }
     .viewer__area {
       width: 55px;
       font-size: 10px;
-      height: 31px;
     }
   }
 
@@ -155,29 +145,4 @@ export const Container = styled.div`
     bottom: 0;
     background-color: gray;
   }
-
-  .button-iniciar{
-    position: absolute;
-    right: 5vh;
-    bottom: 5vh;
-    color: #ffff;
-    background: #3f51b5;
-    padding: 2vh;
-    font-size: 1.75vh;
-    /* border: solid 1px #fff; */
-    /* width: 4vh; */
-    z-index: 3;
-    font-family: 'Roboto', sans-serif;
-    font-weight: 700;
-    transition: all ease 0.5s;
-    letter-spacing: 0.25vh;
-    text-transform: uppercase;
-    transition: all ease 0.5s;
-}
-.button-iniciar:hover{
-    cursor: pointer;
-    transform: scale(1.05);
-    background: #3f51b5;
-
-}
 `;

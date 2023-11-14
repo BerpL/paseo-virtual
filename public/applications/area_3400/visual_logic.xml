@@ -1,0 +1,2817 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <tab name="init" type="InitTab" active="false" scrollx="872.0318472754664" scrolly="471.7001266186462" scale="0.923125918885333">
+    <block xmlns="https://developers.google.com/blockly/xml" type="initSettings" id="?F;S$f(,y7w,EA=M%_L@" x="-650" y="-370">
+      <field name="LOAD_COMP_ASSETS">TRUE</field>
+      <field name="FULLSCREEN">FALSE</field>
+      <field name="BKG_TRANSPARENCY">FALSE</field>
+      <field name="PRESERVE_DRAW_BUF">FALSE</field>
+      <field name="FADE_ANNOTATIONS">TRUE</field>
+    </block>
+    <block xmlns="https://developers.google.com/blockly/xml" type="initPreloader" id="QeS@9XGuyKwy[v(K^_1Q" x="-650" y="-150">
+      <statement name="DO_PROGRESS">
+        <block type="setHTMLElemAttribute" id="1ZP)ig;z7YNQ)1E3!=Za">
+          <field name="ATTRIBUTE">innerHTML</field>
+          <field name="PARENT">TRUE</field>
+          <value name="VALUE">
+            <block type="text_join" id="DP2irr9_Oo,dg4S2-0Cg">
+              <mutation items="2"/>
+              <value name="ADD0">
+                <block type="percentage" id="cQ^ot0pA/jseoWtHT,cL"/>
+              </value>
+              <value name="ADD1">
+                <block type="text" id="CM0?^C}4DL:(4$%*IuSa">
+                  <field name="TEXT">%</field>
+                </block>
+              </value>
+            </block>
+          </value>
+          <value name="ID">
+            <shadow type="text">
+              <field name="TEXT"/>
+            </shadow>
+            <block type="text" id="+|%vIjn(jKNntxw(`A._">
+              <field name="TEXT">loading_percentage</field>
+            </block>
+          </value>
+        </block>
+      </statement>
+      <statement name="DO_END">
+        <block type="setHTMLElemStyle" id="xB%((WN?}}y84iH:m289">
+          <field name="PROPERTY">display</field>
+          <field name="PARENT">TRUE</field>
+          <value name="VALUE">
+            <block type="text" id="T]+6MZCWx-FL=Q%C^KJ;">
+              <field name="TEXT">none</field>
+            </block>
+          </value>
+          <value name="ID">
+            <shadow type="text">
+              <field name="TEXT"/>
+            </shadow>
+            <block type="text" id="$(CER=U7KRk^JnW8sJa6">
+              <field name="TEXT">preloader_screen</field>
+            </block>
+          </value>
+        </block>
+      </statement>
+    </block>
+  </tab>
+  <tab name="main" type="MainTab" active="true" scrollx="-1243.0162187216142" scrolly="1337.5382356723903" scale="0.6139132535407589">
+    <variables xmlns="https://developers.google.com/blockly/xml">
+      <variable id="#W,Q}[8T{ejfT#L,A,Qc" type="">active-cam</variable>
+      <variable id="q/tUY+j}AW=ak2(9y0X^" type="">cam-id</variable>
+      <variable id=")$ox7@wRI!P2Ts)@)byT" type="">operador</variable>
+      <variable id="=?ZWex*swJ1OYq3:I3)Y" type="">information_id</variable>
+      <variable id="O0fG,[q93rWos2G9)wWt" type="">equipos_3500</variable>
+      <variable id="P-BwQp00@U$z@@./I3l3" type="">equipos_3400</variable>
+      <variable id="YS:G/h|Cg}[d?nfn9@^w" type="">getParameter</variable>
+      <variable id="Z,u5I-23_@iH_kPXzO6^" type="">operadores-visibles</variable>
+      <variable id="CNO+8Y30^fg+$eh[9+js" type="">i</variable>
+    </variables>
+    <block xmlns="https://developers.google.com/blockly/xml" type="procedures_defnoreturn" id="2B;T]F:oi0=Xl?ua8Jf4" x="-1370" y="-2010">
+      <mutation>
+        <arg name="active-cam" varid="#W,Q}[8T{ejfT#L,A,Qc"/>
+        <arg name="cam-id" varid="q/tUY+j}AW=ak2(9y0X^"/>
+        <arg name="operador" varid=")$ox7@wRI!P2Ts)@)byT"/>
+      </mutation>
+      <field name="NAME">setUserPosition</field>
+      <comment pinned="false" h="80" w="160">Describe this function...</comment>
+      <statement name="STACK">
+        <block type="tweenCameraExt" id="UQ#YulAIe6$DT)5trgif">
+          <mutation xmlns="http://www.w3.org/1999/xhtml" whenfinishedslot="true"></mutation>
+          <field name="MOVEMENT_TYPE">SPHERICAL</field>
+          <value name="POSITION">
+            <block type="variables_get" id="|SfrEQGo^aS[ZJ76`(uM">
+              <field name="VAR" id=")$ox7@wRI!P2Ts)@)byT">operador</field>
+            </block>
+          </value>
+          <value name="LOOKAT">
+            <block type="variables_get" id="I+Lf;_:`8n.??XOks)*p">
+              <field name="VAR" id="#W,Q}[8T{ejfT#L,A,Qc">active-cam</field>
+            </block>
+          </value>
+          <value name="DURATION">
+            <shadow type="math_number" id="a;VCZsT/~k$v,L~0o(dK">
+              <field name="NUM">2</field>
+            </shadow>
+          </value>
+          <statement name="DO">
+            <block type="controls_if" id="n9X-+$UO*)#_5Q4hLSjk">
+              <value name="IF0">
+                <block type="logic_compare" id="%PT]w@0qjzP2?AqdXyJJ">
+                  <field name="OP">NEQ</field>
+                  <value name="A">
+                    <block type="variables_get" id="u3Zpv?:lR|yBjm.c=^t!">
+                      <field name="VAR" id="q/tUY+j}AW=ak2(9y0X^">cam-id</field>
+                    </block>
+                  </value>
+                  <value name="B">
+                    <block type="logic_boolean" id="Ay@N4@f|]KiiE,D8^vnT">
+                      <field name="BOOL">FALSE</field>
+                    </block>
+                  </value>
+                </block>
+              </value>
+              <statement name="DO0">
+                <block type="setHTMLElemAttribute" id=":spdUjjr.y.NX5-??cNh">
+                  <field name="ATTRIBUTE">value</field>
+                  <field name="PARENT">TRUE</field>
+                  <value name="VALUE">
+                    <block type="variables_get" id="?j=Kn|`A5Tyl{*@KpI[~">
+                      <field name="VAR" id="q/tUY+j}AW=ak2(9y0X^">cam-id</field>
+                    </block>
+                  </value>
+                  <value name="ID">
+                    <shadow type="text">
+                      <field name="TEXT"/>
+                    </shadow>
+                    <block type="text" id="OK7T#nvU[w8U)J6n|!lF">
+                      <field name="TEXT">estado_equipo</field>
+                    </block>
+                  </value>
+                  <next>
+                    <block type="callJSFunction" id="N,n.jQT9;cNpwzzOc_NP">
+                      <mutation xmlns="http://www.w3.org/1999/xhtml" name="emitirEstadoEquipo"></mutation>
+                      <field name="NAME">emitirEstadoEquipo</field>
+                    </block>
+                  </next>
+                </block>
+              </statement>
+              <next>
+                <block type="setActiveCamera" id="iS0CF|zs{t;,2sip9;;|">
+                  <value name="CAMERA">
+                    <shadow type="objectList">
+                      <field name="FIELDNAME">&lt;none&gt;</field>
+                    </shadow>
+                    <block type="variables_get" id="?pol1Q$`5b^7~#e#,4F8">
+                      <field name="VAR" id="#W,Q}[8T{ejfT#L,A,Qc">active-cam</field>
+                    </block>
+                  </value>
+                  <next>
+                    <block type="show" id="x]mt{Q}3?TTp-~7QxzDX">
+                      <value name="VALUE">
+                        <shadow type="objectList">
+                          <field name="FIELDNAME">&lt;none&gt;</field>
+                        </shadow>
+                        <block type="variables_get" id="`?imO3-#cS=^LSvKT`G,">
+                          <field name="VAR" id="Z,u5I-23_@iH_kPXzO6^">operadores-visibles</field>
+                        </block>
+                      </value>
+                      <next>
+                        <block type="hide" id="#ufK(0Ju-5su8tng%ty%">
+                          <value name="VALUE">
+                            <shadow type="objectList">
+                              <field name="FIELDNAME">&lt;none&gt;</field>
+                            </shadow>
+                            <block type="variables_get" id="0(.2c4MPNCtPYU*mU3zZ">
+                              <field name="VAR" id=")$ox7@wRI!P2Ts)@)byT">operador</field>
+                            </block>
+                          </value>
+                        </block>
+                      </next>
+                    </block>
+                  </next>
+                </block>
+              </next>
+            </block>
+          </statement>
+        </block>
+      </statement>
+    </block>
+    <block xmlns="https://developers.google.com/blockly/xml" type="eventHTMLElem" id="bO3JSKyv]PQ]QOhT__HD" x="730" y="-2070">
+      <field name="EVENT">click</field>
+      <field name="PARENT">TRUE</field>
+      <value name="ID">
+        <block type="text" id="~mtQL-1!p%UswtmT;b}t">
+          <field name="TEXT">go-back</field>
+        </block>
+      </value>
+      <statement name="DO">
+        <block type="procedures_callnoreturn" id="1|da7mL=sCgKUiR#;cHx">
+          <mutation name="goBack"/>
+        </block>
+      </statement>
+      <next>
+        <block type="eventHTMLElem" id="yo-X--:M8EWWFy8(]@#q">
+          <field name="EVENT">click</field>
+          <field name="PARENT">TRUE</field>
+          <value name="ID">
+            <block type="text" id="Did*.RY]+a,zVTH~@!I`">
+              <field name="TEXT">go-area</field>
+            </block>
+          </value>
+          <statement name="DO">
+            <block type="procedures_callnoreturn" id="IQz.88;px|2{1Zmnh,zh">
+              <mutation name="goBack"/>
+            </block>
+          </statement>
+          <next>
+            <block type="eventHTMLElem" id="CJgP{v51{$1(EY#~t]h2">
+              <field name="EVENT">click</field>
+              <field name="PARENT">TRUE</field>
+              <value name="ID">
+                <block type="text" id="wpf}bgwBey=(Kz%om/`K">
+                  <field name="TEXT">cam-tanque-acondicionador</field>
+                </block>
+              </value>
+              <statement name="DO">
+                <block type="procedures_callnoreturn" id="_M~!2/nz.9Z,MMKM{.},">
+                  <mutation name="setUserPosition">
+                    <arg name="active-cam"/>
+                    <arg name="cam-id"/>
+                    <arg name="operador"/>
+                  </mutation>
+                  <value name="ARG0">
+                    <block type="objectList" id="_9VU*eWMJAiYKdh%S_HJ">
+                      <field name="FIELDNAME">Cam_3410-TK-001</field>
+                    </block>
+                  </value>
+                  <value name="ARG1">
+                    <block type="logic_boolean" id=",Vm`u%F,#r=2Yc(wk-(-">
+                      <field name="BOOL">FALSE</field>
+                    </block>
+                  </value>
+                  <value name="ARG2">
+                    <block type="objectList" id="CId47HBZe83)mF]:U@~=">
+                      <field name="FIELDNAME">ubi_3410-TK-001</field>
+                    </block>
+                  </value>
+                </block>
+              </statement>
+              <next>
+                <block type="eventHTMLElem" id="ot;L-G8b{.`i*c]Bc](x">
+                  <field name="EVENT">click</field>
+                  <field name="PARENT">TRUE</field>
+                  <value name="ID">
+                    <block type="text" id="BT,TL7Nt*?Gfc*)[kDql">
+                      <field name="TEXT">cam-celdas-flotacion-rougher</field>
+                    </block>
+                  </value>
+                  <statement name="DO">
+                    <block type="procedures_callnoreturn" id="C{VWcfR_OjVpXSsU7b7{">
+                      <mutation name="setUserPosition">
+                        <arg name="active-cam"/>
+                        <arg name="cam-id"/>
+                        <arg name="operador"/>
+                      </mutation>
+                      <value name="ARG0">
+                        <block type="objectList" id="39CVECg2y19EKBGQOi/%">
+                          <field name="FIELDNAME">cam_3410-FT-001@005</field>
+                        </block>
+                      </value>
+                      <value name="ARG1">
+                        <block type="logic_boolean" id="Ya:9S$!)2PqWO*/#e-:`">
+                          <field name="BOOL">FALSE</field>
+                        </block>
+                      </value>
+                      <value name="ARG2">
+                        <block type="objectList" id="m$!9`C[HU$A2U,5lco[;">
+                          <field name="FIELDNAME">ubi_3410-FT-001@005</field>
+                        </block>
+                      </value>
+                    </block>
+                  </statement>
+                  <next>
+                    <block type="eventHTMLElem" id="%]R8EVlE5%Q7j{_U[DkX">
+                      <field name="EVENT">click</field>
+                      <field name="PARENT">TRUE</field>
+                      <value name="ID">
+                        <block type="text" id="Fm)UL[zppiJ/S55Z=%3(">
+                          <field name="TEXT">cam-celdas-flotacion-limpieza</field>
+                        </block>
+                      </value>
+                      <statement name="DO">
+                        <block type="procedures_callnoreturn" id="XR0O3B;)V4@sT6R%T*.1">
+                          <mutation name="setUserPosition">
+                            <arg name="active-cam"/>
+                            <arg name="cam-id"/>
+                            <arg name="operador"/>
+                          </mutation>
+                          <value name="ARG0">
+                            <block type="objectList" id="D+ebqnnAJ-mziI(EJ7;I">
+                              <field name="FIELDNAME">Cam_3410-FT-011@014</field>
+                            </block>
+                          </value>
+                          <value name="ARG1">
+                            <block type="logic_boolean" id="kQU*3/b_mU7n)s4/7PU!">
+                              <field name="BOOL">FALSE</field>
+                            </block>
+                          </value>
+                          <value name="ARG2">
+                            <block type="objectList" id="FXb)o7BZrM:WeoNPoc}8">
+                              <field name="FIELDNAME">ubi_3410-FT-011@014</field>
+                            </block>
+                          </value>
+                        </block>
+                      </statement>
+                      <next>
+                        <block type="eventHTMLElem" id="1(95X8B4HGj(O{t2afqK">
+                          <field name="EVENT">click</field>
+                          <field name="PARENT">TRUE</field>
+                          <value name="ID">
+                            <block type="text" id="0o+%B~#N?o.gxdvqtf0x">
+                              <field name="TEXT">cam-celdas-columna-flotacion</field>
+                            </block>
+                          </value>
+                          <statement name="DO">
+                            <block type="procedures_callnoreturn" id=")h9.2;PuDI3H;3L_1#e^">
+                              <mutation name="setUserPosition">
+                                <arg name="active-cam"/>
+                                <arg name="cam-id"/>
+                                <arg name="operador"/>
+                              </mutation>
+                              <value name="ARG0">
+                                <block type="objectList" id="aEn`#,bSDyNzuiWYEUs*">
+                                  <field name="FIELDNAME">Cam_3410-FT-031/032</field>
+                                </block>
+                              </value>
+                              <value name="ARG1">
+                                <block type="logic_boolean" id="!U5vw~C}E%cI@4`MsDsZ">
+                                  <field name="BOOL">FALSE</field>
+                                </block>
+                              </value>
+                              <value name="ARG2">
+                                <block type="objectList" id=":Hnt9coPaww1IDx~Jqx/">
+                                  <field name="FIELDNAME">ubi_3410-FT-031/032</field>
+                                </block>
+                              </value>
+                            </block>
+                          </statement>
+                          <next>
+                            <block type="eventHTMLElem" id="l~htwbr@h[c.[24KWfwH">
+                              <field name="EVENT">click</field>
+                              <field name="PARENT">TRUE</field>
+                              <value name="ID">
+                                <block type="text" id="IL*Bh.SeN8e}KAL;p03.">
+                                  <field name="TEXT">cam-sistema-lavador-gases</field>
+                                </block>
+                              </value>
+                              <statement name="DO">
+                                <block type="procedures_callnoreturn" id="SZN$Y_4C%?Pg}h3fs:9Q">
+                                  <mutation name="setUserPosition">
+                                    <arg name="active-cam"/>
+                                    <arg name="cam-id"/>
+                                    <arg name="operador"/>
+                                  </mutation>
+                                  <value name="ARG0">
+                                    <block type="objectList" id="Pn:vp8Qs0zcHA!?bv$M{">
+                                      <field name="FIELDNAME">Cam_3410-SK-003</field>
+                                    </block>
+                                  </value>
+                                  <value name="ARG1">
+                                    <block type="logic_boolean" id="$:!U^$ghkjLI-XK~HKCL">
+                                      <field name="BOOL">FALSE</field>
+                                    </block>
+                                  </value>
+                                  <value name="ARG2">
+                                    <block type="objectList" id="KXu#E!w#3#[vmk;!P`{`">
+                                      <field name="FIELDNAME">ubi_3410-SK-003</field>
+                                    </block>
+                                  </value>
+                                </block>
+                              </statement>
+                              <next>
+                                <block type="eventHTMLElem" id="cMf;*nV6JFn1qK=:3`VO">
+                                  <field name="EVENT">click</field>
+                                  <field name="PARENT">TRUE</field>
+                                  <value name="ID">
+                                    <block type="text" id="L|/n2c[2U|c42d+H}V@d">
+                                      <field name="TEXT">cam-espesador-concentrado-molibdeno</field>
+                                    </block>
+                                  </value>
+                                  <statement name="DO">
+                                    <block type="procedures_callnoreturn" id=";cwCXlFiv${|EOg)nejr">
+                                      <mutation name="setUserPosition">
+                                        <arg name="active-cam"/>
+                                        <arg name="cam-id"/>
+                                        <arg name="operador"/>
+                                      </mutation>
+                                      <value name="ARG0">
+                                        <block type="objectList" id="jeWXh$SqD^E_RHQ%n,m.">
+                                          <field name="FIELDNAME">Cam_3410-TH-001</field>
+                                        </block>
+                                      </value>
+                                      <value name="ARG1">
+                                        <block type="logic_boolean" id="@`ub_edsUR6So1Y4/L{#">
+                                          <field name="BOOL">FALSE</field>
+                                        </block>
+                                      </value>
+                                      <value name="ARG2">
+                                        <block type="objectList" id="D}Yy8Le1LSFry@.]k%zD">
+                                          <field name="FIELDNAME">ubi_3410-TH-001</field>
+                                        </block>
+                                      </value>
+                                    </block>
+                                  </statement>
+                                  <next>
+                                    <block type="eventHTMLElem" id="^-c3iIW$Yofd|fBk~T,^">
+                                      <field name="EVENT">click</field>
+                                      <field name="PARENT">TRUE</field>
+                                      <value name="ID">
+                                        <block type="text" id="395HdyhrxXwg_wBH%f,j">
+                                          <field name="TEXT">cam-colector-polvo-tolva</field>
+                                        </block>
+                                      </value>
+                                      <statement name="DO">
+                                        <block type="procedures_callnoreturn" id=";+U+7p}e{_FwC;wp@XkU">
+                                          <mutation name="setUserPosition">
+                                            <arg name="active-cam"/>
+                                            <arg name="cam-id"/>
+                                            <arg name="operador"/>
+                                          </mutation>
+                                          <value name="ARG0">
+                                            <block type="objectList" id="pUjw[)$`dlOpV5h,zk4{">
+                                              <field name="FIELDNAME">Cam_3410-XM-002</field>
+                                            </block>
+                                          </value>
+                                          <value name="ARG1">
+                                            <block type="logic_boolean" id="IHRQ,0(Quo~[+yxu24?0">
+                                              <field name="BOOL">FALSE</field>
+                                            </block>
+                                          </value>
+                                          <value name="ARG2">
+                                            <block type="objectList" id="GNzFcXj8V4]aX9?(!9@7">
+                                              <field name="FIELDNAME">ubi_3410-BH-001</field>
+                                            </block>
+                                          </value>
+                                        </block>
+                                      </statement>
+                                      <next>
+                                        <block type="eventHTMLElem" id="4RIWX?,|a$Uti}v4a=c[">
+                                          <field name="EVENT">click</field>
+                                          <field name="PARENT">TRUE</field>
+                                          <value name="ID">
+                                            <block type="text" id="t+P*_3!b;T=^.oo2$bRu">
+                                              <field name="TEXT">cam-filtro-concentrado-molibdeno</field>
+                                            </block>
+                                          </value>
+                                          <statement name="DO">
+                                            <block type="procedures_callnoreturn" id="RSJzN.6lh@]4Fp!Do5!_">
+                                              <mutation name="setUserPosition">
+                                                <arg name="active-cam"/>
+                                                <arg name="cam-id"/>
+                                                <arg name="operador"/>
+                                              </mutation>
+                                              <value name="ARG0">
+                                                <block type="objectList" id="tfFkiXDg!q,,C/;0J14Y">
+                                                  <field name="FIELDNAME">Cam_3410-FL-001</field>
+                                                </block>
+                                              </value>
+                                              <value name="ARG1">
+                                                <block type="logic_boolean" id="4jKS%OBuP6?uKu7GRj(H">
+                                                  <field name="BOOL">FALSE</field>
+                                                </block>
+                                              </value>
+                                              <value name="ARG2">
+                                                <block type="objectList" id="7:{T=;W;SAP(Rr|)6WEp">
+                                                  <field name="FIELDNAME">ubi_3410-FL-001</field>
+                                                </block>
+                                              </value>
+                                            </block>
+                                          </statement>
+                                          <next>
+                                            <block type="eventHTMLElem" id="wQ~}sr4CC93`dq0oeDim">
+                                              <field name="EVENT">click</field>
+                                              <field name="PARENT">TRUE</field>
+                                              <value name="ID">
+                                                <block type="text" id="t6_:@#cYk%8~7cL#LZnv">
+                                                  <field name="TEXT">cam-secador-concentrado-molibdeno</field>
+                                                </block>
+                                              </value>
+                                              <statement name="DO">
+                                                <block type="procedures_callnoreturn" id="9j_K+)=tu1Yu}}BjVHS%">
+                                                  <mutation name="setUserPosition">
+                                                    <arg name="active-cam"/>
+                                                    <arg name="cam-id"/>
+                                                    <arg name="operador"/>
+                                                  </mutation>
+                                                  <value name="ARG0">
+                                                    <block type="objectList" id="~!Z[DT7;CMb^+w,)JSnQ">
+                                                      <field name="FIELDNAME">Cam_3410-DR-001</field>
+                                                    </block>
+                                                  </value>
+                                                  <value name="ARG1">
+                                                    <block type="logic_boolean" id="E:LK3P@cQ0e},18bx[PT">
+                                                      <field name="BOOL">FALSE</field>
+                                                    </block>
+                                                  </value>
+                                                  <value name="ARG2">
+                                                    <block type="objectList" id="M8D~8SbN?4ruPbIn9Sn/">
+                                                      <field name="FIELDNAME">ubi_3410-DR-001</field>
+                                                    </block>
+                                                  </value>
+                                                </block>
+                                              </statement>
+                                            </block>
+                                          </next>
+                                        </block>
+                                      </next>
+                                    </block>
+                                  </next>
+                                </block>
+                              </next>
+                            </block>
+                          </next>
+                        </block>
+                      </next>
+                    </block>
+                  </next>
+                </block>
+              </next>
+            </block>
+          </next>
+        </block>
+      </next>
+    </block>
+    <block xmlns="https://developers.google.com/blockly/xml" type="whenClicked" id="g.:E-W]Mo%t#3e85~t;E" x="-30" y="-2010">
+      <mutation xmlns="http://www.w3.org/1999/xhtml" adveventoptions="false" enableifmissed="false"></mutation>
+      <field name="X_RAY">FALSE</field>
+      <field name="DOUBLE_CLICK">FALSE</field>
+      <field name="LEFT_BUTTON">TRUE</field>
+      <field name="MIDDLE_BUTTON">TRUE</field>
+      <field name="RIGHT_BUTTON">TRUE</field>
+      <value name="VALUE">
+        <shadow type="objectList" id="^%x?{!;|I4}743)xQq(A">
+          <field name="FIELDNAME">&lt;none&gt;</field>
+        </shadow>
+        <block type="objectList" id="ZZGvfpZD]b(o:rSiGqP%">
+          <field name="FIELDNAME">inf_3410-TK-001</field>
+        </block>
+      </value>
+      <statement name="DO">
+        <block type="console.log" id="n_X?19!P=$C;if[hR62T" disabled="true">
+          <value name="VALUE">
+            <shadow type="text" id=":]7j4Af:;1B{VO{tP/Iq">
+              <field name="TEXT">tanque acondicionador</field>
+            </shadow>
+          </value>
+          <next>
+            <block type="procedures_callnoreturn" id="sIL@lcg70rt1r|27oNzT">
+              <mutation name="setInformacion">
+                <arg name="information_id"/>
+              </mutation>
+              <value name="ARG0">
+                <block type="text" id="6Jyu;0An7Ux%S,5yG#)V">
+                  <field name="TEXT">tanque-acondicionador</field>
+                </block>
+              </value>
+            </block>
+          </next>
+        </block>
+      </statement>
+      <next>
+        <block type="whenClicked" id="3(7Q-nrhGfTu)j/vcV+t">
+          <mutation xmlns="http://www.w3.org/1999/xhtml" adveventoptions="false" enableifmissed="false"></mutation>
+          <field name="X_RAY">FALSE</field>
+          <field name="DOUBLE_CLICK">FALSE</field>
+          <field name="LEFT_BUTTON">TRUE</field>
+          <field name="MIDDLE_BUTTON">TRUE</field>
+          <field name="RIGHT_BUTTON">TRUE</field>
+          <value name="VALUE">
+            <shadow type="objectList">
+              <field name="FIELDNAME">&lt;none&gt;</field>
+            </shadow>
+            <block type="objectList" id="uM7c,giqIUoqCY8V~,gt">
+              <field name="FIELDNAME">inf_3410-FT-011@014</field>
+            </block>
+          </value>
+          <statement name="DO">
+            <block type="console.log" id="[`oBg+@h]j|n*$M`8w}f" disabled="true">
+              <value name="VALUE">
+                <shadow type="text" id="BgTth3`#g3JYO0Tki22O">
+                  <field name="TEXT">Celdas de Flotación Primera Limpieza Fila 1</field>
+                </shadow>
+              </value>
+              <next>
+                <block type="procedures_callnoreturn" id="8VZK1^?n3DV=~Rdo.#oH">
+                  <mutation name="setInformacion">
+                    <arg name="information_id"/>
+                  </mutation>
+                  <value name="ARG0">
+                    <block type="text" id="IdRO@O#)6w2,%?P|,)2-">
+                      <field name="TEXT">celdas-flotacion-primera-limpieza-fila-1</field>
+                    </block>
+                  </value>
+                </block>
+              </next>
+            </block>
+          </statement>
+          <next>
+            <block type="whenClicked" id="fl45jf{1+pB7Qd}7biq6">
+              <mutation xmlns="http://www.w3.org/1999/xhtml" adveventoptions="false" enableifmissed="false"></mutation>
+              <field name="X_RAY">FALSE</field>
+              <field name="DOUBLE_CLICK">FALSE</field>
+              <field name="LEFT_BUTTON">TRUE</field>
+              <field name="MIDDLE_BUTTON">TRUE</field>
+              <field name="RIGHT_BUTTON">TRUE</field>
+              <value name="VALUE">
+                <shadow type="objectList">
+                  <field name="FIELDNAME">&lt;none&gt;</field>
+                </shadow>
+                <block type="objectList" id="7`UR[p[8gqlftc?@2r~^">
+                  <field name="FIELDNAME">inf_3410-FT-015@018</field>
+                </block>
+              </value>
+              <statement name="DO">
+                <block type="console.log" id="|u^SM|f+WgVE-Ev)@:T1" disabled="true">
+                  <value name="VALUE">
+                    <shadow type="text" id="4-f)7+[,klvWcLdT(dH?">
+                      <field name="TEXT">Celdas de Flotación Primera Limpieza Fila 2</field>
+                    </shadow>
+                  </value>
+                  <next>
+                    <block type="procedures_callnoreturn" id="?NOOER%EkPwM;:Ktb{%A">
+                      <mutation name="setInformacion">
+                        <arg name="information_id"/>
+                      </mutation>
+                      <value name="ARG0">
+                        <block type="text" id="}$J,|o||VSwEff/,5+`%">
+                          <field name="TEXT">celdas-flotacion-primera-limpieza-fila-2</field>
+                        </block>
+                      </value>
+                    </block>
+                  </next>
+                </block>
+              </statement>
+              <next>
+                <block type="whenClicked" id="-AfhDtiT?@_3^pys5]J@">
+                  <mutation xmlns="http://www.w3.org/1999/xhtml" adveventoptions="false" enableifmissed="false"></mutation>
+                  <field name="X_RAY">FALSE</field>
+                  <field name="DOUBLE_CLICK">FALSE</field>
+                  <field name="LEFT_BUTTON">TRUE</field>
+                  <field name="MIDDLE_BUTTON">TRUE</field>
+                  <field name="RIGHT_BUTTON">TRUE</field>
+                  <value name="VALUE">
+                    <shadow type="objectList">
+                      <field name="FIELDNAME">&lt;none&gt;</field>
+                    </shadow>
+                    <block type="objectList" id="UrOXi2i%HRoLhqiA?l?l">
+                      <field name="FIELDNAME">inf_3410-FT-001@005</field>
+                    </block>
+                  </value>
+                  <statement name="DO">
+                    <block type="console.log" id="EEkAa8rlH^k].NilG*LE" disabled="true">
+                      <value name="VALUE">
+                        <shadow type="text" id="v[Pd.A$)6YIY$Ns5Azex">
+                          <field name="TEXT">Celdas de Flotación Rougher Fila 1</field>
+                        </shadow>
+                      </value>
+                      <next>
+                        <block type="procedures_callnoreturn" id="{h)$HF,:~dtcAf8^DD/$">
+                          <mutation name="setInformacion">
+                            <arg name="information_id"/>
+                          </mutation>
+                          <value name="ARG0">
+                            <block type="text" id="#Yf-#k6e(Z98dPguHt:t">
+                              <field name="TEXT">celdas-flotacion-rougher-fila-1</field>
+                            </block>
+                          </value>
+                        </block>
+                      </next>
+                    </block>
+                  </statement>
+                  <next>
+                    <block type="whenClicked" id=")5d%q5I`jx}bQu,UKG8e">
+                      <mutation xmlns="http://www.w3.org/1999/xhtml" adveventoptions="false" enableifmissed="false"></mutation>
+                      <field name="X_RAY">FALSE</field>
+                      <field name="DOUBLE_CLICK">FALSE</field>
+                      <field name="LEFT_BUTTON">TRUE</field>
+                      <field name="MIDDLE_BUTTON">TRUE</field>
+                      <field name="RIGHT_BUTTON">TRUE</field>
+                      <value name="VALUE">
+                        <shadow type="objectList">
+                          <field name="FIELDNAME">&lt;none&gt;</field>
+                        </shadow>
+                        <block type="objectList" id=".}]-=XADwH|KxY4-n-uH">
+                          <field name="FIELDNAME">inf_3410-FT-006@010</field>
+                        </block>
+                      </value>
+                      <statement name="DO">
+                        <block type="console.log" id="/!Dx@[rMdzr`}`!Ta5a0" disabled="true">
+                          <value name="VALUE">
+                            <shadow type="text" id="Ub!X`RfP1.@6a/#wc:tw">
+                              <field name="TEXT">Celdas de Flotación Rougher Fila 2</field>
+                            </shadow>
+                          </value>
+                          <next>
+                            <block type="procedures_callnoreturn" id="6iG_*Z]G6u-p)#B8@J1u">
+                              <mutation name="setInformacion">
+                                <arg name="information_id"/>
+                              </mutation>
+                              <value name="ARG0">
+                                <block type="text" id="YVC70Q}Fl24XopC{df]3">
+                                  <field name="TEXT">celdas-flotacion-rougher-fila-2</field>
+                                </block>
+                              </value>
+                            </block>
+                          </next>
+                        </block>
+                      </statement>
+                      <next>
+                        <block type="whenClicked" id="sU$oZRWUSY;#*Y-_ws.^">
+                          <mutation xmlns="http://www.w3.org/1999/xhtml" adveventoptions="false" enableifmissed="false"></mutation>
+                          <field name="X_RAY">FALSE</field>
+                          <field name="DOUBLE_CLICK">FALSE</field>
+                          <field name="LEFT_BUTTON">TRUE</field>
+                          <field name="MIDDLE_BUTTON">TRUE</field>
+                          <field name="RIGHT_BUTTON">TRUE</field>
+                          <value name="VALUE">
+                            <shadow type="objectList">
+                              <field name="FIELDNAME">&lt;none&gt;</field>
+                            </shadow>
+                            <block type="objectList" id="@W}KEX^MK08MpSALHeeC">
+                              <field name="FIELDNAME">inf_3410-FT-023@026</field>
+                            </block>
+                          </value>
+                          <statement name="DO">
+                            <block type="console.log" id="7ZA$n)|vFKPW747e2X!{" disabled="true">
+                              <value name="VALUE">
+                                <shadow type="text" id=",1rmd`XmS|oJk7(e0/mt">
+                                  <field name="TEXT">Celdas de Flotación Segunda Limpieza Fila 1</field>
+                                </shadow>
+                              </value>
+                              <next>
+                                <block type="procedures_callnoreturn" id="e%3RvYHs|bBmXGBnc?mW">
+                                  <mutation name="setInformacion">
+                                    <arg name="information_id"/>
+                                  </mutation>
+                                  <value name="ARG0">
+                                    <block type="text" id="Gi%n$6Ej-ekDBCoXK{}8">
+                                      <field name="TEXT">celdas-flotacion-segunda-limpieza-fila-1</field>
+                                    </block>
+                                  </value>
+                                </block>
+                              </next>
+                            </block>
+                          </statement>
+                          <next>
+                            <block type="whenClicked" id="GtVIC{aZEHEJH%aRit_j">
+                              <mutation xmlns="http://www.w3.org/1999/xhtml" adveventoptions="false" enableifmissed="false"></mutation>
+                              <field name="X_RAY">FALSE</field>
+                              <field name="DOUBLE_CLICK">FALSE</field>
+                              <field name="LEFT_BUTTON">TRUE</field>
+                              <field name="MIDDLE_BUTTON">TRUE</field>
+                              <field name="RIGHT_BUTTON">TRUE</field>
+                              <value name="VALUE">
+                                <shadow type="objectList">
+                                  <field name="FIELDNAME">&lt;none&gt;</field>
+                                </shadow>
+                                <block type="objectList" id="z2nU}zQJd^-XEOO`0{Hq">
+                                  <field name="FIELDNAME">inf_3410-FT-027@030</field>
+                                </block>
+                              </value>
+                              <statement name="DO">
+                                <block type="console.log" id="iK_YyHF=%ZJmvIRcO-bE" disabled="true">
+                                  <value name="VALUE">
+                                    <shadow type="text" id="N55wN#(|A6[i{luzUt?8">
+                                      <field name="TEXT">Celdas de Flotación Segunda Limpieza Fila 2</field>
+                                    </shadow>
+                                  </value>
+                                  <next>
+                                    <block type="procedures_callnoreturn" id="G4D,zeEeAP2vtvkb8;SJ">
+                                      <mutation name="setInformacion">
+                                        <arg name="information_id"/>
+                                      </mutation>
+                                      <value name="ARG0">
+                                        <block type="text" id="f.0|lj]ZZp66`Obnx;_y">
+                                          <field name="TEXT">celdas-flotacion-segunda-limpieza-fila-2</field>
+                                        </block>
+                                      </value>
+                                    </block>
+                                  </next>
+                                </block>
+                              </statement>
+                              <next>
+                                <block type="whenClicked" id="xZMsKg(UPAJg8aUCL:aw">
+                                  <mutation xmlns="http://www.w3.org/1999/xhtml" adveventoptions="false" enableifmissed="false"></mutation>
+                                  <field name="X_RAY">FALSE</field>
+                                  <field name="DOUBLE_CLICK">FALSE</field>
+                                  <field name="LEFT_BUTTON">TRUE</field>
+                                  <field name="MIDDLE_BUTTON">TRUE</field>
+                                  <field name="RIGHT_BUTTON">TRUE</field>
+                                  <value name="VALUE">
+                                    <shadow type="objectList">
+                                      <field name="FIELDNAME">&lt;none&gt;</field>
+                                    </shadow>
+                                    <block type="objectList" id="GK?PYL1v)agqi{x94)u2">
+                                      <field name="FIELDNAME">inf_3410-FT-031/032</field>
+                                    </block>
+                                  </value>
+                                  <statement name="DO">
+                                    <block type="console.log" id="~ch^w2%B@Yo?l~HFy(-|" disabled="true">
+                                      <value name="VALUE">
+                                        <shadow type="text" id="2*jN:[ogT*)Ex0#V!5.H">
+                                          <field name="TEXT">Celda Columna Flotación Tercera Limpieza</field>
+                                        </shadow>
+                                      </value>
+                                      <next>
+                                        <block type="procedures_callnoreturn" id="{KcZ5!P]?$Tl(vAx=v,|">
+                                          <mutation name="setInformacion">
+                                            <arg name="information_id"/>
+                                          </mutation>
+                                          <value name="ARG0">
+                                            <block type="text" id="DPIq6hOAJuii-g(j!2j{">
+                                              <field name="TEXT">celda-columna-flotacion-tercera-limpieza</field>
+                                            </block>
+                                          </value>
+                                        </block>
+                                      </next>
+                                    </block>
+                                  </statement>
+                                  <next>
+                                    <block type="whenClicked" id="Qp?t7]M9KzG(X/xU;ECX">
+                                      <mutation xmlns="http://www.w3.org/1999/xhtml" adveventoptions="false" enableifmissed="false"></mutation>
+                                      <field name="X_RAY">FALSE</field>
+                                      <field name="DOUBLE_CLICK">FALSE</field>
+                                      <field name="LEFT_BUTTON">TRUE</field>
+                                      <field name="MIDDLE_BUTTON">TRUE</field>
+                                      <field name="RIGHT_BUTTON">TRUE</field>
+                                      <value name="VALUE">
+                                        <shadow type="objectList">
+                                          <field name="FIELDNAME">&lt;none&gt;</field>
+                                        </shadow>
+                                        <block type="objectList" id=".m}Asc!hjB*GkT.|yI}M">
+                                          <field name="FIELDNAME">inf_3410-FT-031/032_b</field>
+                                        </block>
+                                      </value>
+                                      <statement name="DO">
+                                        <block type="console.log" id="UPtWTz|%-Xl-I^mWF;oE" disabled="true">
+                                          <value name="VALUE">
+                                            <shadow type="text" id="7idq]C70IYe0#G_n+a*)">
+                                              <field name="TEXT">Celda Columna Flotación Cuarta Limpieza</field>
+                                            </shadow>
+                                          </value>
+                                          <next>
+                                            <block type="procedures_callnoreturn" id="9zitj^UB4PE)7-#1ctzB">
+                                              <mutation name="setInformacion">
+                                                <arg name="information_id"/>
+                                              </mutation>
+                                              <value name="ARG0">
+                                                <block type="text" id="j;Eb5%A0-lIHX0RO8]^P">
+                                                  <field name="TEXT">celda-columna-flotacion-cuarta-limpieza</field>
+                                                </block>
+                                              </value>
+                                            </block>
+                                          </next>
+                                        </block>
+                                      </statement>
+                                      <next>
+                                        <block type="whenClicked" id="C4D{Aly4]=Es~XH]2%Uz">
+                                          <mutation xmlns="http://www.w3.org/1999/xhtml" adveventoptions="false" enableifmissed="false"></mutation>
+                                          <field name="X_RAY">FALSE</field>
+                                          <field name="DOUBLE_CLICK">FALSE</field>
+                                          <field name="LEFT_BUTTON">TRUE</field>
+                                          <field name="MIDDLE_BUTTON">TRUE</field>
+                                          <field name="RIGHT_BUTTON">TRUE</field>
+                                          <value name="VALUE">
+                                            <shadow type="objectList">
+                                              <field name="FIELDNAME">&lt;none&gt;</field>
+                                            </shadow>
+                                            <block type="objectList" id="=50BG/H3LgoK^PDr12g{">
+                                              <field name="FIELDNAME">inf_3410-TH-001</field>
+                                            </block>
+                                          </value>
+                                          <statement name="DO">
+                                            <block type="console.log" id="~cqO}Hw$-+)NdeJ_9YTy" disabled="true">
+                                              <value name="VALUE">
+                                                <shadow type="text" id="Vpn,?fY.--YV8PA`J8_Z">
+                                                  <field name="TEXT">Espesador Concentrado Molibdeno</field>
+                                                </shadow>
+                                              </value>
+                                              <next>
+                                                <block type="procedures_callnoreturn" id="PGmWs%~OPwfk]GY/0vP:">
+                                                  <mutation name="setInformacion">
+                                                    <arg name="information_id"/>
+                                                  </mutation>
+                                                  <value name="ARG0">
+                                                    <block type="text" id="/L:}:37ue_lbSh[e:X[f">
+                                                      <field name="TEXT">espesador-concentrado-molibdeno</field>
+                                                    </block>
+                                                  </value>
+                                                </block>
+                                              </next>
+                                            </block>
+                                          </statement>
+                                          <next>
+                                            <block type="whenClicked" id="BmpK9aU9L@:i{1*;Gi^T">
+                                              <mutation xmlns="http://www.w3.org/1999/xhtml" adveventoptions="false" enableifmissed="false"></mutation>
+                                              <field name="X_RAY">FALSE</field>
+                                              <field name="DOUBLE_CLICK">FALSE</field>
+                                              <field name="LEFT_BUTTON">TRUE</field>
+                                              <field name="MIDDLE_BUTTON">TRUE</field>
+                                              <field name="RIGHT_BUTTON">TRUE</field>
+                                              <value name="VALUE">
+                                                <shadow type="objectList">
+                                                  <field name="FIELDNAME">&lt;none&gt;</field>
+                                                </shadow>
+                                                <block type="objectList" id="f#5ZZfZHQq,9;`lCUE#q">
+                                                  <field name="FIELDNAME">inf_3410-SK-003</field>
+                                                </block>
+                                              </value>
+                                              <statement name="DO">
+                                                <block type="console.log" id=")$HT6@`@v12.{:$D-5TE" disabled="true">
+                                                  <value name="VALUE">
+                                                    <shadow type="text" id="oWmkc`UjA^+uJx]54LZD">
+                                                      <field name="TEXT">Sistema Lavador de Gases 1</field>
+                                                    </shadow>
+                                                  </value>
+                                                  <next>
+                                                    <block type="procedures_callnoreturn" id="2iuzi]NLk)6}q-#u]tn4">
+                                                      <mutation name="setInformacion">
+                                                        <arg name="information_id"/>
+                                                      </mutation>
+                                                      <value name="ARG0">
+                                                        <block type="text" id="n(iUsNp`acX]H3N5PfZ^">
+                                                          <field name="TEXT">sistema-lavador-gases</field>
+                                                        </block>
+                                                      </value>
+                                                    </block>
+                                                  </next>
+                                                </block>
+                                              </statement>
+                                              <next>
+                                                <block type="whenClicked" id="%+y|X)Uo$UyA0_^gw$1g">
+                                                  <mutation xmlns="http://www.w3.org/1999/xhtml" adveventoptions="false" enableifmissed="false"></mutation>
+                                                  <field name="X_RAY">FALSE</field>
+                                                  <field name="DOUBLE_CLICK">FALSE</field>
+                                                  <field name="LEFT_BUTTON">TRUE</field>
+                                                  <field name="MIDDLE_BUTTON">TRUE</field>
+                                                  <field name="RIGHT_BUTTON">TRUE</field>
+                                                  <value name="VALUE">
+                                                    <shadow type="objectList">
+                                                      <field name="FIELDNAME">&lt;none&gt;</field>
+                                                    </shadow>
+                                                    <block type="objectList" id="FJ!/OE=d#_H00a)y7R0l">
+                                                      <field name="FIELDNAME">inf_3410-SK-003_b</field>
+                                                    </block>
+                                                  </value>
+                                                  <statement name="DO">
+                                                    <block type="console.log" id=":[%vTb)hW]|5tK`%lA_=" disabled="true">
+                                                      <value name="VALUE">
+                                                        <shadow type="text" id="$5!!7S;4P@78M6B6mF|D">
+                                                          <field name="TEXT">Sistema Lavador de Gases 2</field>
+                                                        </shadow>
+                                                      </value>
+                                                      <next>
+                                                        <block type="procedures_callnoreturn" id="Oalnd^)o6P=dlzRB/!fs">
+                                                          <mutation name="setInformacion">
+                                                            <arg name="information_id"/>
+                                                          </mutation>
+                                                          <value name="ARG0">
+                                                            <block type="text" id="0O`,jkdwFYYJM0O0^%(4">
+                                                              <field name="TEXT">sistema-lavador-gases-2</field>
+                                                            </block>
+                                                          </value>
+                                                        </block>
+                                                      </next>
+                                                    </block>
+                                                  </statement>
+                                                  <next>
+                                                    <block type="whenClicked" id="`6#9]9~WR*)-5HIYEE*)">
+                                                      <mutation xmlns="http://www.w3.org/1999/xhtml" adveventoptions="false" enableifmissed="false"></mutation>
+                                                      <field name="X_RAY">FALSE</field>
+                                                      <field name="DOUBLE_CLICK">FALSE</field>
+                                                      <field name="LEFT_BUTTON">TRUE</field>
+                                                      <field name="MIDDLE_BUTTON">TRUE</field>
+                                                      <field name="RIGHT_BUTTON">TRUE</field>
+                                                      <value name="VALUE">
+                                                        <shadow type="objectList">
+                                                          <field name="FIELDNAME">&lt;none&gt;</field>
+                                                        </shadow>
+                                                        <block type="objectList" id="ZL2xc6:ZC.:bRLQU3,+6">
+                                                          <field name="FIELDNAME">inf_3410-BH-001</field>
+                                                        </block>
+                                                      </value>
+                                                      <statement name="DO">
+                                                        <block type="console.log" id="NeJ}uT[iPW)_p~jB%ivO" disabled="true">
+                                                          <value name="VALUE">
+                                                            <shadow type="text" id="@MSz~6wuv#0Ig`B;A7tn">
+                                                              <field name="TEXT">Colector de Polvo Tolva Concentrado de Molibdeno</field>
+                                                            </shadow>
+                                                          </value>
+                                                          <next>
+                                                            <block type="procedures_callnoreturn" id="Yt9]F9vBQ6^j%^HIp[T3">
+                                                              <mutation name="setInformacion">
+                                                                <arg name="information_id"/>
+                                                              </mutation>
+                                                              <value name="ARG0">
+                                                                <block type="text" id="1),esXrGgx#4Qr#]mXhp">
+                                                                  <field name="TEXT">colector-polvo-tolva-concentrado-molibdeno</field>
+                                                                </block>
+                                                              </value>
+                                                            </block>
+                                                          </next>
+                                                        </block>
+                                                      </statement>
+                                                      <next>
+                                                        <block type="whenClicked" id="dV8O#Mr7Z^xhi]=4%#?;">
+                                                          <mutation xmlns="http://www.w3.org/1999/xhtml" adveventoptions="false" enableifmissed="false"></mutation>
+                                                          <field name="X_RAY">FALSE</field>
+                                                          <field name="DOUBLE_CLICK">FALSE</field>
+                                                          <field name="LEFT_BUTTON">TRUE</field>
+                                                          <field name="MIDDLE_BUTTON">TRUE</field>
+                                                          <field name="RIGHT_BUTTON">TRUE</field>
+                                                          <value name="VALUE">
+                                                            <shadow type="objectList">
+                                                              <field name="FIELDNAME">&lt;none&gt;</field>
+                                                            </shadow>
+                                                            <block type="objectList" id=":jD8E65a?_2}IHLfn~Tr">
+                                                              <field name="FIELDNAME">inf_3410-BN-001_b</field>
+                                                            </block>
+                                                          </value>
+                                                          <statement name="DO">
+                                                            <block type="console.log" id="Af]ym6AP.NDm9],{Z__X" disabled="true">
+                                                              <value name="VALUE">
+                                                                <shadow type="text" id="wV[{gaz*O)~FErjMuX4v">
+                                                                  <field name="TEXT">Tolva Almacenamiento Concentrado Molibdeno</field>
+                                                                </shadow>
+                                                              </value>
+                                                              <next>
+                                                                <block type="procedures_callnoreturn" id="pzo{MPL~ZVK6yC{/^-Df">
+                                                                  <mutation name="setInformacion">
+                                                                    <arg name="information_id"/>
+                                                                  </mutation>
+                                                                  <value name="ARG0">
+                                                                    <block type="text" id="[s|^^t,-%(X*8(GDVIZJ">
+                                                                      <field name="TEXT">tolva-almacenamiento-concentrado-molibdeno</field>
+                                                                    </block>
+                                                                  </value>
+                                                                </block>
+                                                              </next>
+                                                            </block>
+                                                          </statement>
+                                                          <next>
+                                                            <block type="whenClicked" id="XzF{$j$fh-.J#ut_41|,">
+                                                              <mutation xmlns="http://www.w3.org/1999/xhtml" adveventoptions="false" enableifmissed="false"></mutation>
+                                                              <field name="X_RAY">FALSE</field>
+                                                              <field name="DOUBLE_CLICK">FALSE</field>
+                                                              <field name="LEFT_BUTTON">TRUE</field>
+                                                              <field name="MIDDLE_BUTTON">TRUE</field>
+                                                              <field name="RIGHT_BUTTON">TRUE</field>
+                                                              <value name="VALUE">
+                                                                <shadow type="objectList">
+                                                                  <field name="FIELDNAME">&lt;none&gt;</field>
+                                                                </shadow>
+                                                                <block type="objectList" id="*@3Q.=z}N4~Rup!q{+hS">
+                                                                  <field name="FIELDNAME">inf_3410-FL-001</field>
+                                                                </block>
+                                                              </value>
+                                                              <statement name="DO">
+                                                                <block type="console.log" id="(iA#]X,GNqm!:A[{[Lq(" disabled="true">
+                                                                  <value name="VALUE">
+                                                                    <shadow type="text" id="]n7P:OY_{FznQXK)mtd5">
+                                                                      <field name="TEXT">Filtro Concentrado Molibdeno</field>
+                                                                    </shadow>
+                                                                  </value>
+                                                                  <next>
+                                                                    <block type="procedures_callnoreturn" id="#bTq?AZ(=y(`*ShtGnGA">
+                                                                      <mutation name="setInformacion">
+                                                                        <arg name="information_id"/>
+                                                                      </mutation>
+                                                                      <value name="ARG0">
+                                                                        <block type="text" id="lo=X!gc#Pa%rQ:#YPpQ`">
+                                                                          <field name="TEXT">filtro-concentrado-molibdeno</field>
+                                                                        </block>
+                                                                      </value>
+                                                                    </block>
+                                                                  </next>
+                                                                </block>
+                                                              </statement>
+                                                              <next>
+                                                                <block type="whenClicked" id="+-[f50*`fqE014};mL2C">
+                                                                  <mutation xmlns="http://www.w3.org/1999/xhtml" adveventoptions="false" enableifmissed="false"></mutation>
+                                                                  <field name="X_RAY">FALSE</field>
+                                                                  <field name="DOUBLE_CLICK">FALSE</field>
+                                                                  <field name="LEFT_BUTTON">TRUE</field>
+                                                                  <field name="MIDDLE_BUTTON">TRUE</field>
+                                                                  <field name="RIGHT_BUTTON">TRUE</field>
+                                                                  <value name="VALUE">
+                                                                    <shadow type="objectList">
+                                                                      <field name="FIELDNAME">&lt;none&gt;</field>
+                                                                    </shadow>
+                                                                    <block type="objectList" id="D(?W:^?tiTkgWM_r^o~z">
+                                                                      <field name="FIELDNAME">inf_3410-DR-001</field>
+                                                                    </block>
+                                                                  </value>
+                                                                  <statement name="DO">
+                                                                    <block type="console.log" id="W@~@DK1{!=zcuTyai~DY" disabled="true">
+                                                                      <value name="VALUE">
+                                                                        <shadow type="text" id="ltUxGfR2o]_j0xinmBWr">
+                                                                          <field name="TEXT">Secador Concentrado Molibdeno</field>
+                                                                        </shadow>
+                                                                      </value>
+                                                                      <next>
+                                                                        <block type="procedures_callnoreturn" id="7[f{?#D%4k5e!dQcM30?">
+                                                                          <mutation name="setInformacion">
+                                                                            <arg name="information_id"/>
+                                                                          </mutation>
+                                                                          <value name="ARG0">
+                                                                            <block type="text" id="koqiS*rivoyR;_5HCom5">
+                                                                              <field name="TEXT">secador-concentrado-molibdeno</field>
+                                                                            </block>
+                                                                          </value>
+                                                                        </block>
+                                                                      </next>
+                                                                    </block>
+                                                                  </statement>
+                                                                </block>
+                                                              </next>
+                                                            </block>
+                                                          </next>
+                                                        </block>
+                                                      </next>
+                                                    </block>
+                                                  </next>
+                                                </block>
+                                              </next>
+                                            </block>
+                                          </next>
+                                        </block>
+                                      </next>
+                                    </block>
+                                  </next>
+                                </block>
+                              </next>
+                            </block>
+                          </next>
+                        </block>
+                      </next>
+                    </block>
+                  </next>
+                </block>
+              </next>
+            </block>
+          </next>
+        </block>
+      </next>
+    </block>
+    <block xmlns="https://developers.google.com/blockly/xml" type="whenClicked" id="Jp3=XY{|daemZMMykipE" x="1510" y="-1893">
+      <mutation xmlns="http://www.w3.org/1999/xhtml" adveventoptions="false" enableifmissed="false"></mutation>
+      <field name="X_RAY">FALSE</field>
+      <field name="DOUBLE_CLICK">FALSE</field>
+      <field name="LEFT_BUTTON">TRUE</field>
+      <field name="MIDDLE_BUTTON">TRUE</field>
+      <field name="RIGHT_BUTTON">TRUE</field>
+      <value name="VALUE">
+        <shadow type="objectList">
+          <field name="FIELDNAME">&lt;none&gt;</field>
+        </shadow>
+        <block type="objectList" id="WY6gz@61y3=j$B.A*wIC">
+          <field name="FIELDNAME">ubi_3410-TK-001</field>
+        </block>
+      </value>
+      <statement name="DO">
+        <block type="procedures_callnoreturn" id="x}Ol17LHUd~A+nXN@X#8">
+          <mutation name="setUserPosition">
+            <arg name="active-cam"/>
+            <arg name="cam-id"/>
+            <arg name="operador"/>
+          </mutation>
+          <value name="ARG0">
+            <block type="objectList" id="07#hJ:VQ,Ljz~6cu-t53">
+              <field name="FIELDNAME">Cam_3410-TK-001</field>
+            </block>
+          </value>
+          <value name="ARG1">
+            <block type="text" id=")~-(z;M@COdvBj=A!Zef">
+              <field name="TEXT">ubi_3410-TK-001</field>
+            </block>
+          </value>
+          <value name="ARG2">
+            <block type="objectList" id="R77wsMdl1C1-EBE5aN9F">
+              <field name="FIELDNAME">ubi_3410-TK-001</field>
+            </block>
+          </value>
+        </block>
+      </statement>
+      <next>
+        <block type="whenClicked" id="nIh)BXT2g=,(bgD=Jc+d">
+          <mutation xmlns="http://www.w3.org/1999/xhtml" adveventoptions="false" enableifmissed="false"></mutation>
+          <field name="X_RAY">FALSE</field>
+          <field name="DOUBLE_CLICK">FALSE</field>
+          <field name="LEFT_BUTTON">TRUE</field>
+          <field name="MIDDLE_BUTTON">TRUE</field>
+          <field name="RIGHT_BUTTON">TRUE</field>
+          <value name="VALUE">
+            <shadow type="objectList" id="-{+,Or@3Z|$u_Snn{O$d">
+              <field name="FIELDNAME">&lt;none&gt;</field>
+            </shadow>
+            <block type="objectList" id="5n77d],Ur8#r2fkd=Bb6">
+              <field name="FIELDNAME">ubi_3410-FT-001@005</field>
+            </block>
+          </value>
+          <statement name="DO">
+            <block type="procedures_callnoreturn" id="v_A2gWV`3DM-b8#z~+6C">
+              <mutation name="setUserPosition">
+                <arg name="active-cam"/>
+                <arg name="cam-id"/>
+                <arg name="operador"/>
+              </mutation>
+              <value name="ARG0">
+                <block type="objectList" id="c](#)vv}ywI!FE;qY.pj">
+                  <field name="FIELDNAME">cam_3410-FT-001@005</field>
+                </block>
+              </value>
+              <value name="ARG1">
+                <block type="text" id=":y1Us*NlC|2dg5A^ineI">
+                  <field name="TEXT">ubi_3410-FT-001@005</field>
+                </block>
+              </value>
+              <value name="ARG2">
+                <block type="objectList" id="7JuNLWow~NT2`Ys]V*ls">
+                  <field name="FIELDNAME">ubi_3410-FT-001@005</field>
+                </block>
+              </value>
+            </block>
+          </statement>
+          <next>
+            <block type="whenClicked" id="RrI`6ItiosuX8T13oX%4">
+              <mutation xmlns="http://www.w3.org/1999/xhtml" adveventoptions="false" enableifmissed="false"></mutation>
+              <field name="X_RAY">FALSE</field>
+              <field name="DOUBLE_CLICK">FALSE</field>
+              <field name="LEFT_BUTTON">TRUE</field>
+              <field name="MIDDLE_BUTTON">TRUE</field>
+              <field name="RIGHT_BUTTON">TRUE</field>
+              <value name="VALUE">
+                <shadow type="objectList" id="XZF,Kggy?k9x^ny94Ey]">
+                  <field name="FIELDNAME">&lt;none&gt;</field>
+                </shadow>
+                <block type="objectList" id="J`@-7R0+7@M7reo(7IwG">
+                  <field name="FIELDNAME">ubi_3410-FT-011@014</field>
+                </block>
+              </value>
+              <statement name="DO">
+                <block type="procedures_callnoreturn" id="kYQkXr@`Z|O@0e=i-2-:">
+                  <mutation name="setUserPosition">
+                    <arg name="active-cam"/>
+                    <arg name="cam-id"/>
+                    <arg name="operador"/>
+                  </mutation>
+                  <value name="ARG0">
+                    <block type="objectList" id=";AJz{B!v|=2{e:t]h*9u">
+                      <field name="FIELDNAME">Cam_3410-FT-011@014</field>
+                    </block>
+                  </value>
+                  <value name="ARG1">
+                    <block type="text" id="yX5H|VobG-X`?9iQIB9j">
+                      <field name="TEXT">ubi_3410-FT-011@014</field>
+                    </block>
+                  </value>
+                  <value name="ARG2">
+                    <block type="objectList" id="rgeYyPW_5Eh)$0j*t!|-">
+                      <field name="FIELDNAME">ubi_3410-FT-011@014</field>
+                    </block>
+                  </value>
+                </block>
+              </statement>
+              <next>
+                <block type="whenClicked" id="1vYY=g.G{kHQWOxoKn|]">
+                  <mutation xmlns="http://www.w3.org/1999/xhtml" adveventoptions="false" enableifmissed="false"></mutation>
+                  <field name="X_RAY">FALSE</field>
+                  <field name="DOUBLE_CLICK">FALSE</field>
+                  <field name="LEFT_BUTTON">TRUE</field>
+                  <field name="MIDDLE_BUTTON">TRUE</field>
+                  <field name="RIGHT_BUTTON">TRUE</field>
+                  <value name="VALUE">
+                    <shadow type="objectList" id="gj,5DlgG{/O3kLE9*!7n">
+                      <field name="FIELDNAME">&lt;none&gt;</field>
+                    </shadow>
+                    <block type="objectList" id="Pp|T~.drkA.JxO~KukoF">
+                      <field name="FIELDNAME">ubi_3410-FT-031/032</field>
+                    </block>
+                  </value>
+                  <statement name="DO">
+                    <block type="procedures_callnoreturn" id="O)yz9kh9dhj*yNg-[~MO">
+                      <mutation name="setUserPosition">
+                        <arg name="active-cam"/>
+                        <arg name="cam-id"/>
+                        <arg name="operador"/>
+                      </mutation>
+                      <value name="ARG0">
+                        <block type="objectList" id="{H$pf{kib@jta,hrR-y5">
+                          <field name="FIELDNAME">Cam_3410-FT-031/032</field>
+                        </block>
+                      </value>
+                      <value name="ARG1">
+                        <block type="text" id="Vl8FuV`MuI,L4n,@Aqz}">
+                          <field name="TEXT">ubi_3410-FT-031/032</field>
+                        </block>
+                      </value>
+                      <value name="ARG2">
+                        <block type="objectList" id="{Z~[$VT@C3f@Xx!$sKB`">
+                          <field name="FIELDNAME">ubi_3410-FT-031/032</field>
+                        </block>
+                      </value>
+                    </block>
+                  </statement>
+                  <next>
+                    <block type="whenClicked" id="@1V6Tz/CH{vnMvQ1h|7K">
+                      <mutation xmlns="http://www.w3.org/1999/xhtml" adveventoptions="false" enableifmissed="false"></mutation>
+                      <field name="X_RAY">FALSE</field>
+                      <field name="DOUBLE_CLICK">FALSE</field>
+                      <field name="LEFT_BUTTON">TRUE</field>
+                      <field name="MIDDLE_BUTTON">TRUE</field>
+                      <field name="RIGHT_BUTTON">TRUE</field>
+                      <value name="VALUE">
+                        <shadow type="objectList" id="g5?dSfian-i((-0-RxU]">
+                          <field name="FIELDNAME">&lt;none&gt;</field>
+                        </shadow>
+                        <block type="objectList" id="P|bEf{.mh;@UPE^2w:#8">
+                          <field name="FIELDNAME">ubi_3410-SK-003</field>
+                        </block>
+                      </value>
+                      <statement name="DO">
+                        <block type="procedures_callnoreturn" id="7_oxrExDGMW[v_VpW=Ia">
+                          <mutation name="setUserPosition">
+                            <arg name="active-cam"/>
+                            <arg name="cam-id"/>
+                            <arg name="operador"/>
+                          </mutation>
+                          <value name="ARG0">
+                            <block type="objectList" id="]r9sO`i[(0![qxnVwsZc">
+                              <field name="FIELDNAME">Cam_3410-SK-003</field>
+                            </block>
+                          </value>
+                          <value name="ARG1">
+                            <block type="text" id="E^(~4fw_-s?@7VQVegw,">
+                              <field name="TEXT">ubi_3410-SK-003</field>
+                            </block>
+                          </value>
+                          <value name="ARG2">
+                            <block type="objectList" id="DUY3eelcMeA%5[!|7b2a">
+                              <field name="FIELDNAME">ubi_3410-SK-003</field>
+                            </block>
+                          </value>
+                        </block>
+                      </statement>
+                      <next>
+                        <block type="whenClicked" id="XW_l=$whtc(edf}DKF;p">
+                          <mutation xmlns="http://www.w3.org/1999/xhtml" adveventoptions="false" enableifmissed="false"></mutation>
+                          <field name="X_RAY">FALSE</field>
+                          <field name="DOUBLE_CLICK">FALSE</field>
+                          <field name="LEFT_BUTTON">TRUE</field>
+                          <field name="MIDDLE_BUTTON">TRUE</field>
+                          <field name="RIGHT_BUTTON">TRUE</field>
+                          <value name="VALUE">
+                            <shadow type="objectList" id="hdO+-(kklhg@1@/Mzv?l">
+                              <field name="FIELDNAME">&lt;none&gt;</field>
+                            </shadow>
+                            <block type="objectList" id="X(~7L6|Qmb$F6+7$KDlA">
+                              <field name="FIELDNAME">ubi_3410-TH-001</field>
+                            </block>
+                          </value>
+                          <statement name="DO">
+                            <block type="procedures_callnoreturn" id="5HmEb,3$OSQiMl%~89If">
+                              <mutation name="setUserPosition">
+                                <arg name="active-cam"/>
+                                <arg name="cam-id"/>
+                                <arg name="operador"/>
+                              </mutation>
+                              <value name="ARG0">
+                                <block type="objectList" id="IO1$#tQT@r$J3`3jS|H8">
+                                  <field name="FIELDNAME">Cam_3410-TH-001</field>
+                                </block>
+                              </value>
+                              <value name="ARG1">
+                                <block type="text" id="modYY*Hu*5X|,a*7W7]E">
+                                  <field name="TEXT">ubi_3410-TH-001</field>
+                                </block>
+                              </value>
+                              <value name="ARG2">
+                                <block type="objectList" id=".92H)!tKh?XZu:jUlDDr">
+                                  <field name="FIELDNAME">ubi_3410-TH-001</field>
+                                </block>
+                              </value>
+                            </block>
+                          </statement>
+                          <next>
+                            <block type="whenClicked" id="vXGFmNksau^$pa?,DZso">
+                              <mutation xmlns="http://www.w3.org/1999/xhtml" adveventoptions="false" enableifmissed="false"></mutation>
+                              <field name="X_RAY">FALSE</field>
+                              <field name="DOUBLE_CLICK">FALSE</field>
+                              <field name="LEFT_BUTTON">TRUE</field>
+                              <field name="MIDDLE_BUTTON">TRUE</field>
+                              <field name="RIGHT_BUTTON">TRUE</field>
+                              <value name="VALUE">
+                                <shadow type="objectList" id="546T+zyF=oCv_74xw9Gy">
+                                  <field name="FIELDNAME">&lt;none&gt;</field>
+                                </shadow>
+                                <block type="objectList" id="/VB7V%15FGRj|8C;nPq{">
+                                  <field name="FIELDNAME">ubi_3410-BH-001</field>
+                                </block>
+                              </value>
+                              <statement name="DO">
+                                <block type="procedures_callnoreturn" id="%X2G4w+VP=VHwX/SOw#n">
+                                  <mutation name="setUserPosition">
+                                    <arg name="active-cam"/>
+                                    <arg name="cam-id"/>
+                                    <arg name="operador"/>
+                                  </mutation>
+                                  <value name="ARG0">
+                                    <block type="objectList" id="E@4ymKO5=8r?Lf94Q`t:">
+                                      <field name="FIELDNAME">Cam_3410-XM-002</field>
+                                    </block>
+                                  </value>
+                                  <value name="ARG1">
+                                    <block type="text" id="QFp.lAi]s[)nHf5Gb5aY">
+                                      <field name="TEXT">ubi_3410-BH-001</field>
+                                    </block>
+                                  </value>
+                                  <value name="ARG2">
+                                    <block type="objectList" id="RT%T$ju|w-r??-#,C{v3">
+                                      <field name="FIELDNAME">ubi_3410-BH-001</field>
+                                    </block>
+                                  </value>
+                                </block>
+                              </statement>
+                              <next>
+                                <block type="whenClicked" id="z;smn$1oa!/s6U4plPv_">
+                                  <mutation xmlns="http://www.w3.org/1999/xhtml" adveventoptions="false" enableifmissed="false"></mutation>
+                                  <field name="X_RAY">FALSE</field>
+                                  <field name="DOUBLE_CLICK">FALSE</field>
+                                  <field name="LEFT_BUTTON">TRUE</field>
+                                  <field name="MIDDLE_BUTTON">TRUE</field>
+                                  <field name="RIGHT_BUTTON">TRUE</field>
+                                  <value name="VALUE">
+                                    <shadow type="objectList" id=".EtZ/,LY/X1(@xQqS[iA">
+                                      <field name="FIELDNAME">&lt;none&gt;</field>
+                                    </shadow>
+                                    <block type="objectList" id="WS2y2)he3=Sk6H7;$(a^">
+                                      <field name="FIELDNAME">ubi_3410-FL-001</field>
+                                    </block>
+                                  </value>
+                                  <statement name="DO">
+                                    <block type="procedures_callnoreturn" id="A2X@SGd]#Od8HdH65#YG">
+                                      <mutation name="setUserPosition">
+                                        <arg name="active-cam"/>
+                                        <arg name="cam-id"/>
+                                        <arg name="operador"/>
+                                      </mutation>
+                                      <value name="ARG0">
+                                        <block type="objectList" id="QIJ1qOEcb|Lof](hrpMW">
+                                          <field name="FIELDNAME">Cam_3410-FL-001</field>
+                                        </block>
+                                      </value>
+                                      <value name="ARG1">
+                                        <block type="text" id="ed#e%?];|WBk_R.1.FXJ">
+                                          <field name="TEXT">ubi_3410-FL-001</field>
+                                        </block>
+                                      </value>
+                                      <value name="ARG2">
+                                        <block type="objectList" id="lQZO94D.{PBL08lHe)_{">
+                                          <field name="FIELDNAME">ubi_3410-FL-001</field>
+                                        </block>
+                                      </value>
+                                    </block>
+                                  </statement>
+                                  <next>
+                                    <block type="whenClicked" id="H{*$n#,K.MJ2)zEKv.v6">
+                                      <mutation xmlns="http://www.w3.org/1999/xhtml" adveventoptions="false" enableifmissed="false"></mutation>
+                                      <field name="X_RAY">FALSE</field>
+                                      <field name="DOUBLE_CLICK">FALSE</field>
+                                      <field name="LEFT_BUTTON">TRUE</field>
+                                      <field name="MIDDLE_BUTTON">TRUE</field>
+                                      <field name="RIGHT_BUTTON">TRUE</field>
+                                      <value name="VALUE">
+                                        <shadow type="objectList" id="0DnXYkZHYteIgDiPB]KU">
+                                          <field name="FIELDNAME">&lt;none&gt;</field>
+                                        </shadow>
+                                        <block type="objectList" id="}PuWNc-`g:Hy)swx;94q">
+                                          <field name="FIELDNAME">ubi_3410-DR-001</field>
+                                        </block>
+                                      </value>
+                                      <statement name="DO">
+                                        <block type="procedures_callnoreturn" id="yL%wrdI*iA66G4?HDV3R">
+                                          <mutation name="setUserPosition">
+                                            <arg name="active-cam"/>
+                                            <arg name="cam-id"/>
+                                            <arg name="operador"/>
+                                          </mutation>
+                                          <value name="ARG0">
+                                            <block type="objectList" id="B4.P[ykU[h;%SK[+1Z$;">
+                                              <field name="FIELDNAME">Cam_3410-DR-001</field>
+                                            </block>
+                                          </value>
+                                          <value name="ARG1">
+                                            <block type="text" id="0gCj5W#zHiQ^.F+a%4g_">
+                                              <field name="TEXT">ubi_3410-DR-001</field>
+                                            </block>
+                                          </value>
+                                          <value name="ARG2">
+                                            <block type="objectList" id="?lwQY~]zqsG;(f3T+3O#">
+                                              <field name="FIELDNAME">ubi_3410-DR-001</field>
+                                            </block>
+                                          </value>
+                                        </block>
+                                      </statement>
+                                    </block>
+                                  </next>
+                                </block>
+                              </next>
+                            </block>
+                          </next>
+                        </block>
+                      </next>
+                    </block>
+                  </next>
+                </block>
+              </next>
+            </block>
+          </next>
+        </block>
+      </next>
+    </block>
+    <block xmlns="https://developers.google.com/blockly/xml" type="whenClicked" id="^#5P5Ca~k(~whmCni}PR" x="2190" y="-1890">
+      <mutation xmlns="http://www.w3.org/1999/xhtml" adveventoptions="false" enableifmissed="false"></mutation>
+      <field name="X_RAY">FALSE</field>
+      <field name="DOUBLE_CLICK">FALSE</field>
+      <field name="LEFT_BUTTON">TRUE</field>
+      <field name="MIDDLE_BUTTON">TRUE</field>
+      <field name="RIGHT_BUTTON">TRUE</field>
+      <value name="VALUE">
+        <shadow type="objectList">
+          <field name="FIELDNAME">&lt;none&gt;</field>
+        </shadow>
+        <block type="objectList" id="(O@A0NSraf$7+e2Z2)zN">
+          <field name="FIELDNAME">inf_3520-PU-025</field>
+        </block>
+      </value>
+      <statement name="DO">
+        <block type="console.log" id="%Fp1DfTW5/Q@M0;=BIfq" disabled="true">
+          <value name="VALUE">
+            <shadow type="text" id="6R*mG9J@F*@]mdH%f%;D">
+              <field name="TEXT">apretando boton verde 1</field>
+            </shadow>
+          </value>
+          <next>
+            <block type="procedures_callnoreturn" id="R:X9S2a0DK@S0}vQdOmm">
+              <mutation name="setInformacion">
+                <arg name="information_id"/>
+              </mutation>
+              <value name="ARG0">
+                <block type="text" id="Q=miV$P62-6}=v6()b3]">
+                  <field name="TEXT">bomba-descarga-diesel-planta-molibdeno</field>
+                </block>
+              </value>
+            </block>
+          </next>
+        </block>
+      </statement>
+      <next>
+        <block type="whenClicked" id="ePR8*F{^S^X9{vt*VmYO">
+          <mutation xmlns="http://www.w3.org/1999/xhtml" adveventoptions="false" enableifmissed="false"></mutation>
+          <field name="X_RAY">FALSE</field>
+          <field name="DOUBLE_CLICK">FALSE</field>
+          <field name="LEFT_BUTTON">TRUE</field>
+          <field name="MIDDLE_BUTTON">TRUE</field>
+          <field name="RIGHT_BUTTON">TRUE</field>
+          <value name="VALUE">
+            <shadow type="objectList">
+              <field name="FIELDNAME">&lt;none&gt;</field>
+            </shadow>
+            <block type="objectList" id="ug=A.{xw_F!ERi}*s$s?">
+              <field name="FIELDNAME">inf_3520-PU-036</field>
+            </block>
+          </value>
+          <statement name="DO">
+            <block type="console.log" id="d`IsMM(k^~9Vsy~;WONw" disabled="true">
+              <value name="VALUE">
+                <shadow type="text" id="kvOO;6lgD,mS.s$LA#{.">
+                  <field name="TEXT">apretando boton verde 2</field>
+                </shadow>
+              </value>
+              <next>
+                <block type="procedures_callnoreturn" id="6]}lDO@;;ygyvQ4eDn1Z">
+                  <mutation name="setInformacion">
+                    <arg name="information_id"/>
+                  </mutation>
+                  <value name="ARG0">
+                    <block type="text" id="yzu=QamIrDTivlW/n~?N">
+                      <field name="TEXT">bomba-transferencia-diesel-planta-molibdeno</field>
+                    </block>
+                  </value>
+                </block>
+              </next>
+            </block>
+          </statement>
+          <next>
+            <block type="whenClicked" id="/z*,w9ue@;WBSK83|4gg">
+              <mutation xmlns="http://www.w3.org/1999/xhtml" adveventoptions="false" enableifmissed="false"></mutation>
+              <field name="X_RAY">FALSE</field>
+              <field name="DOUBLE_CLICK">FALSE</field>
+              <field name="LEFT_BUTTON">TRUE</field>
+              <field name="MIDDLE_BUTTON">TRUE</field>
+              <field name="RIGHT_BUTTON">TRUE</field>
+              <value name="VALUE">
+                <shadow type="objectList">
+                  <field name="FIELDNAME">&lt;none&gt;</field>
+                </shadow>
+                <block type="objectList" id="]Ze+N43I0nmK)Wov$%Y7">
+                  <field name="FIELDNAME">inf_3520-TK-017</field>
+                </block>
+              </value>
+              <statement name="DO">
+                <block type="console.log" id="99[[]Zu.7OxbMr.wVhVx" disabled="true">
+                  <value name="VALUE">
+                    <shadow type="text" id="n$ZtOw[9)r2xBI~Y4KQ;">
+                      <field name="TEXT">apretando chancadora 1</field>
+                    </shadow>
+                  </value>
+                  <next>
+                    <block type="procedures_callnoreturn" id="g)V?p@K4]B6@8?{+82aW">
+                      <mutation name="setInformacion">
+                        <arg name="information_id"/>
+                      </mutation>
+                      <value name="ARG0">
+                        <block type="text" id="^$$N7b.?I-X?t1k/65Ay">
+                          <field name="TEXT">tanque-diario-diesel-planta-molibdeno</field>
+                        </block>
+                      </value>
+                    </block>
+                  </next>
+                </block>
+              </statement>
+              <next>
+                <block type="whenClicked" id=":*e=3u|6w0)*WzS_Xms#">
+                  <mutation xmlns="http://www.w3.org/1999/xhtml" adveventoptions="false" enableifmissed="false"></mutation>
+                  <field name="X_RAY">FALSE</field>
+                  <field name="DOUBLE_CLICK">FALSE</field>
+                  <field name="LEFT_BUTTON">TRUE</field>
+                  <field name="MIDDLE_BUTTON">TRUE</field>
+                  <field name="RIGHT_BUTTON">TRUE</field>
+                  <value name="VALUE">
+                    <shadow type="objectList">
+                      <field name="FIELDNAME">&lt;none&gt;</field>
+                    </shadow>
+                    <block type="objectList" id="]t+Z5Hks82SG+=vuj@q#">
+                      <field name="FIELDNAME">inf_3530-PU-001</field>
+                    </block>
+                  </value>
+                  <statement name="DO">
+                    <block type="console.log" id="W[Cf~XA*Z8xgo^8dLSnE" disabled="true">
+                      <value name="VALUE">
+                        <shadow type="text" id="j3DN5u:qR00=-,Ju2;g/">
+                          <field name="TEXT">apretando chancadora 2</field>
+                        </shadow>
+                      </value>
+                      <next>
+                        <block type="procedures_callnoreturn" id="Yz^#f(eC9t]`d03baphb">
+                          <mutation name="setInformacion">
+                            <arg name="information_id"/>
+                          </mutation>
+                          <value name="ARG0">
+                            <block type="text" id="C1.gn%V7=dat[:{HB`m*">
+                              <field name="TEXT">bomba-descarga-nahs</field>
+                            </block>
+                          </value>
+                        </block>
+                      </next>
+                    </block>
+                  </statement>
+                  <next>
+                    <block type="whenClicked" id="T(m/A]J~I1(S06)c3UIq">
+                      <mutation xmlns="http://www.w3.org/1999/xhtml" adveventoptions="false" enableifmissed="false"></mutation>
+                      <field name="X_RAY">FALSE</field>
+                      <field name="DOUBLE_CLICK">FALSE</field>
+                      <field name="LEFT_BUTTON">TRUE</field>
+                      <field name="MIDDLE_BUTTON">TRUE</field>
+                      <field name="RIGHT_BUTTON">TRUE</field>
+                      <value name="VALUE">
+                        <shadow type="objectList">
+                          <field name="FIELDNAME">&lt;none&gt;</field>
+                        </shadow>
+                        <block type="objectList" id="|!VcR`}T?D%_X,}h8z@`">
+                          <field name="FIELDNAME">inf_3530-PU-002</field>
+                        </block>
+                      </value>
+                      <statement name="DO">
+                        <block type="console.log" id="dDk0|A6p=5~sl4?5a3Ao" disabled="true">
+                          <value name="VALUE">
+                            <shadow type="text" id="7X,/TmT8_ch?J}hs;%gm">
+                              <field name="TEXT">apretando faja de sacrificio</field>
+                            </shadow>
+                          </value>
+                          <next>
+                            <block type="procedures_callnoreturn" id="Mg)+!Wq:1-lA,de.(0dt">
+                              <mutation name="setInformacion">
+                                <arg name="information_id"/>
+                              </mutation>
+                              <value name="ARG0">
+                                <block type="text" id="-z:d~ye]uJ#jtJ[EmOXJ">
+                                  <field name="TEXT">bomba-transferencia-nahs-2</field>
+                                </block>
+                              </value>
+                            </block>
+                          </next>
+                        </block>
+                      </statement>
+                      <next>
+                        <block type="whenClicked" id=",yXvYP,PTbRX}Y^-@IO7">
+                          <mutation xmlns="http://www.w3.org/1999/xhtml" adveventoptions="false" enableifmissed="false"></mutation>
+                          <field name="X_RAY">FALSE</field>
+                          <field name="DOUBLE_CLICK">FALSE</field>
+                          <field name="LEFT_BUTTON">TRUE</field>
+                          <field name="MIDDLE_BUTTON">TRUE</field>
+                          <field name="RIGHT_BUTTON">TRUE</field>
+                          <value name="VALUE">
+                            <shadow type="objectList">
+                              <field name="FIELDNAME">&lt;none&gt;</field>
+                            </shadow>
+                            <block type="objectList" id="Da4v8MKsg8|IRg%OqUWe">
+                              <field name="FIELDNAME">inf_3530-PU-003</field>
+                            </block>
+                          </value>
+                          <statement name="DO">
+                            <block type="console.log" id="u@y@WXCBS5oH,hUj+.8o" disabled="true">
+                              <value name="VALUE">
+                                <shadow type="text" id="h@Uu#8eQMuSsTBT/Bq.p">
+                                  <field name="TEXT">apretando faja transportadora 2</field>
+                                </shadow>
+                              </value>
+                              <next>
+                                <block type="procedures_callnoreturn" id="zV*o)4(s~^#r%=}|pmu:">
+                                  <mutation name="setInformacion">
+                                    <arg name="information_id"/>
+                                  </mutation>
+                                  <value name="ARG0">
+                                    <block type="text" id="Vnv[@~z*Gw8rs@1-!ohx">
+                                      <field name="TEXT">bomba-transferencia-nahs-3</field>
+                                    </block>
+                                  </value>
+                                </block>
+                              </next>
+                            </block>
+                          </statement>
+                          <next>
+                            <block type="whenClicked" id="W_Q(G8dT|C~2knE44[^-">
+                              <mutation xmlns="http://www.w3.org/1999/xhtml" adveventoptions="false" enableifmissed="false"></mutation>
+                              <field name="X_RAY">FALSE</field>
+                              <field name="DOUBLE_CLICK">FALSE</field>
+                              <field name="LEFT_BUTTON">TRUE</field>
+                              <field name="MIDDLE_BUTTON">TRUE</field>
+                              <field name="RIGHT_BUTTON">TRUE</field>
+                              <value name="VALUE">
+                                <shadow type="objectList">
+                                  <field name="FIELDNAME">&lt;none&gt;</field>
+                                </shadow>
+                                <block type="objectList" id="TzIZGjn(Rz_)%v60_dC?">
+                                  <field name="FIELDNAME">inf_3530-PU-006</field>
+                                </block>
+                              </value>
+                              <statement name="DO">
+                                <block type="console.log" id="eLIOsKx^RA%`qNq_kEv#" disabled="true">
+                                  <value name="VALUE">
+                                    <shadow type="text" id=".p$LbZ(v)Cy60O|rA8#z">
+                                      <field name="TEXT">apretando faja overlay</field>
+                                    </shadow>
+                                  </value>
+                                  <next>
+                                    <block type="procedures_callnoreturn" id="j#._3FzgaPfx]cST*zOj">
+                                      <mutation name="setInformacion">
+                                        <arg name="information_id"/>
+                                      </mutation>
+                                      <value name="ARG0">
+                                        <block type="text" id="ytP%Hv(Pd|H!?-*#p+Cs">
+                                          <field name="TEXT">bombas-circuito-nahs-6</field>
+                                        </block>
+                                      </value>
+                                    </block>
+                                  </next>
+                                </block>
+                              </statement>
+                              <next>
+                                <block type="whenClicked" id="jCz`4k06U@53=[/%o|-#">
+                                  <mutation xmlns="http://www.w3.org/1999/xhtml" adveventoptions="false" enableifmissed="false"></mutation>
+                                  <field name="X_RAY">FALSE</field>
+                                  <field name="DOUBLE_CLICK">FALSE</field>
+                                  <field name="LEFT_BUTTON">TRUE</field>
+                                  <field name="MIDDLE_BUTTON">TRUE</field>
+                                  <field name="RIGHT_BUTTON">TRUE</field>
+                                  <value name="VALUE">
+                                    <shadow type="objectList">
+                                      <field name="FIELDNAME">&lt;none&gt;</field>
+                                    </shadow>
+                                    <block type="objectList" id="]+;1H6NHoqdP*R|MrNty">
+                                      <field name="FIELDNAME">inf_3530-PU-007</field>
+                                    </block>
+                                  </value>
+                                  <statement name="DO">
+                                    <block type="console.log" id="[48J8)UadA98^J4b;wpp" disabled="true">
+                                      <value name="VALUE">
+                                        <shadow type="text" id="#!*9)amd#.2|oEPWY.-u">
+                                          <field name="TEXT">apretando magneto faja alimentadora 1</field>
+                                        </shadow>
+                                      </value>
+                                      <next>
+                                        <block type="procedures_callnoreturn" id="U#.+v!,FY3/]o)wz]zWf">
+                                          <mutation name="setInformacion">
+                                            <arg name="information_id"/>
+                                          </mutation>
+                                          <value name="ARG0">
+                                            <block type="text" id="d)Tr:?ikwQzt{6grHV3B">
+                                              <field name="TEXT">bombas-circuito-nahs-7</field>
+                                            </block>
+                                          </value>
+                                        </block>
+                                      </next>
+                                    </block>
+                                  </statement>
+                                  <next>
+                                    <block type="whenClicked" id="[)SjCK$-0iN,8_Sv#9Ev">
+                                      <mutation xmlns="http://www.w3.org/1999/xhtml" adveventoptions="false" enableifmissed="false"></mutation>
+                                      <field name="X_RAY">FALSE</field>
+                                      <field name="DOUBLE_CLICK">FALSE</field>
+                                      <field name="LEFT_BUTTON">TRUE</field>
+                                      <field name="MIDDLE_BUTTON">TRUE</field>
+                                      <field name="RIGHT_BUTTON">TRUE</field>
+                                      <value name="VALUE">
+                                        <shadow type="objectList">
+                                          <field name="FIELDNAME">&lt;none&gt;</field>
+                                        </shadow>
+                                        <block type="objectList" id="/Lc}wofNYf!;~7n0Px+q">
+                                          <field name="FIELDNAME">inf_3530-TK-004</field>
+                                        </block>
+                                      </value>
+                                      <statement name="DO">
+                                        <block type="console.log" id="li;8hm;Biq/Z,=PhETto" disabled="true">
+                                          <value name="VALUE">
+                                            <shadow type="text" id="=$0`T3YqP2}/7vhoUNcm">
+                                              <field name="TEXT">apretando magneto faja alimentadora 2</field>
+                                            </shadow>
+                                          </value>
+                                          <next>
+                                            <block type="procedures_callnoreturn" id="#u2ZS?!W!~Sq!;H[E]C7">
+                                              <mutation name="setInformacion">
+                                                <arg name="information_id"/>
+                                              </mutation>
+                                              <value name="ARG0">
+                                                <block type="text" id="5`E3C0.tV)P2k*Ph[dZS">
+                                                  <field name="TEXT">tanque-diario-nahs</field>
+                                                </block>
+                                              </value>
+                                            </block>
+                                          </next>
+                                        </block>
+                                      </statement>
+                                    </block>
+                                  </next>
+                                </block>
+                              </next>
+                            </block>
+                          </next>
+                        </block>
+                      </next>
+                    </block>
+                  </next>
+                </block>
+              </next>
+            </block>
+          </next>
+        </block>
+      </next>
+    </block>
+    <block xmlns="https://developers.google.com/blockly/xml" type="procedures_defnoreturn" id="AQ=B0NkZRDdoUbxKDgr7" x="-1370" y="-1690">
+      <field name="NAME">goBack</field>
+      <comment pinned="false" h="80" w="160">Describe this function...</comment>
+      <statement name="STACK">
+        <block type="setActiveCamera" id="vW~%W~Q{@AO{{4TA$Vk1">
+          <value name="CAMERA">
+            <shadow type="objectList">
+              <field name="FIELDNAME">&lt;none&gt;</field>
+            </shadow>
+            <block type="objectList" id="*Rz.u-WkQWEDXQF}[p8B">
+              <field name="FIELDNAME">Cam_paneo</field>
+            </block>
+          </value>
+          <next>
+            <block type="show" id="Ir6|y12{lB+IV(7px~mh">
+              <value name="VALUE">
+                <shadow type="objectList">
+                  <field name="FIELDNAME">&lt;none&gt;</field>
+                </shadow>
+                <block type="variables_get" id="-#A-P^EYr[C4zNd,1t;I">
+                  <field name="VAR" id="Z,u5I-23_@iH_kPXzO6^">operadores-visibles</field>
+                </block>
+              </value>
+              <next>
+                <block type="tweenCameraExt" id="_X1RHLv$4A`5A6)|`]0f">
+                  <mutation xmlns="http://www.w3.org/1999/xhtml" whenfinishedslot="false"></mutation>
+                  <field name="MOVEMENT_TYPE">SPHERICAL</field>
+                  <value name="POSITION">
+                    <block type="objectList" id="kF`@Pcm{Zv?KEfR~i|tB">
+                      <field name="FIELDNAME">ref_cam_paneo</field>
+                    </block>
+                  </value>
+                  <value name="LOOKAT">
+                    <block type="objectList" id="pUFUpxgnnNJr/L+8|H`2">
+                      <field name="FIELDNAME">Object12919</field>
+                    </block>
+                  </value>
+                  <value name="DURATION">
+                    <shadow type="math_number" id="~5VBRMW=3*V/yLuXMI.(">
+                      <field name="NUM">2</field>
+                    </shadow>
+                  </value>
+                </block>
+              </next>
+            </block>
+          </next>
+        </block>
+      </statement>
+    </block>
+    <block xmlns="https://developers.google.com/blockly/xml" type="eventHTMLElem" id="F:(QnBxDwJ*(F.!7?EYG" x="2790" y="-1890">
+      <field name="EVENT">click</field>
+      <field name="PARENT">TRUE</field>
+      <value name="ID">
+        <shadow type="text" id="3n2I,m*CUf*-y00/6oX`">
+          <field name="TEXT">cam-pica-rocas</field>
+        </shadow>
+        <block type="text" id="M^8d{=}rOqc;sA]+o;o?">
+          <field name="TEXT">cam-bomba-descarga-diesel-planta-molibdeno</field>
+        </block>
+      </value>
+      <statement name="DO">
+        <block type="procedures_callnoreturn" id=")r]x*E.8ffStZ:G)w[37">
+          <mutation name="setUserPosition">
+            <arg name="active-cam"/>
+            <arg name="cam-id"/>
+            <arg name="operador"/>
+          </mutation>
+          <value name="ARG0">
+            <block type="objectList" id="qrLSwkXT_A(7$si-QA09">
+              <field name="FIELDNAME">Camera_3520-PU-025</field>
+            </block>
+          </value>
+          <value name="ARG1">
+            <block type="logic_boolean" id="as4A!lfqjz6!^B)G9.+3">
+              <field name="BOOL">FALSE</field>
+            </block>
+          </value>
+          <value name="ARG2">
+            <block type="objectList" id="Y=kqg|6}/c8SzNhW$nq!">
+              <field name="FIELDNAME">ubi_3520-PU-025</field>
+            </block>
+          </value>
+        </block>
+      </statement>
+      <next>
+        <block type="eventHTMLElem" id="K)a8T81}]Xb@kFyMl`s?">
+          <field name="EVENT">click</field>
+          <field name="PARENT">TRUE</field>
+          <value name="ID">
+            <shadow type="text" id="if:wAQFzTKDv2`Sq~c~m">
+              <field name="TEXT">cam-fajas-sacrificio</field>
+            </shadow>
+            <block type="text" id="PIjs|~_@V?;${OlA=[1p">
+              <field name="TEXT">cam-bomba-descarga-nahs</field>
+            </block>
+          </value>
+          <statement name="DO">
+            <block type="procedures_callnoreturn" id="(an2frlS%;g,oc?1c.mb">
+              <mutation name="setUserPosition">
+                <arg name="active-cam"/>
+                <arg name="cam-id"/>
+                <arg name="operador"/>
+              </mutation>
+              <value name="ARG0">
+                <block type="objectList" id="f/eaN4nzUC8]bvGg9bFd">
+                  <field name="FIELDNAME">Camera_3530-PU-001</field>
+                </block>
+              </value>
+              <value name="ARG1">
+                <block type="logic_boolean" id="^ZaPgKwb%-}8|6#!;k0T">
+                  <field name="BOOL">FALSE</field>
+                </block>
+              </value>
+              <value name="ARG2">
+                <block type="objectList" id="We-XLAW@+$bzE.JQRYc-">
+                  <field name="FIELDNAME">ubi_3530-PU-001</field>
+                </block>
+              </value>
+            </block>
+          </statement>
+          <next>
+            <block type="eventHTMLElem" id="=bO.Op$:ERE(49zbg_%-">
+              <field name="EVENT">click</field>
+              <field name="PARENT">TRUE</field>
+              <value name="ID">
+                <shadow type="text" id="hS^ej`|?|De?o=L[HXSC">
+                  <field name="TEXT">cam-fajas-alimentadoras</field>
+                </shadow>
+                <block type="text" id="+jJu:,xBqM1|IT}R[CEt">
+                  <field name="TEXT">cam-bomba-transferencia-nahs</field>
+                </block>
+              </value>
+              <statement name="DO">
+                <block type="procedures_callnoreturn" id="-kMnoa*S_?sR}NVg{C{{">
+                  <mutation name="setUserPosition">
+                    <arg name="active-cam"/>
+                    <arg name="cam-id"/>
+                    <arg name="operador"/>
+                  </mutation>
+                  <value name="ARG0">
+                    <block type="objectList" id="p-u]p`PMI@T/i9Np^`qy">
+                      <field name="FIELDNAME">Camera_3530-PU-002/003</field>
+                    </block>
+                  </value>
+                  <value name="ARG1">
+                    <block type="logic_boolean" id="M#[@jEu$5i)O-l%yHq/6">
+                      <field name="BOOL">FALSE</field>
+                    </block>
+                  </value>
+                  <value name="ARG2">
+                    <block type="objectList" id="zjRg22zNL[=.%:a{D6M$">
+                      <field name="FIELDNAME">ubi_3530-PU-002/003</field>
+                    </block>
+                  </value>
+                </block>
+              </statement>
+              <next>
+                <block type="eventHTMLElem" id="pxt[JA,vUWgv0_F+nzV3">
+                  <field name="EVENT">click</field>
+                  <field name="PARENT">TRUE</field>
+                  <value name="ID">
+                    <shadow type="text" id="#{t%fZg1pUzDn$*)SSZ7">
+                      <field name="TEXT">cam-colector-polvo</field>
+                    </shadow>
+                    <block type="text" id="sTPe=N]6ld|N~R;9p`pW">
+                      <field name="TEXT">cam-bomba-circuito-nahs</field>
+                    </block>
+                  </value>
+                  <statement name="DO">
+                    <block type="procedures_callnoreturn" id="!th[k)6?=l^d(s7cz}Gr">
+                      <mutation name="setUserPosition">
+                        <arg name="active-cam"/>
+                        <arg name="cam-id"/>
+                        <arg name="operador"/>
+                      </mutation>
+                      <value name="ARG0">
+                        <block type="objectList" id="Rqnq.yEsg-SJ@ORF8O9M">
+                          <field name="FIELDNAME">Camera_3530-PU-006/007</field>
+                        </block>
+                      </value>
+                      <value name="ARG1">
+                        <block type="logic_boolean" id=",C!yk7!E+VSW-JRr.Jwb">
+                          <field name="BOOL">FALSE</field>
+                        </block>
+                      </value>
+                      <value name="ARG2">
+                        <block type="objectList" id="CMD^ZRy*Sy.s)c8OQ]`P">
+                          <field name="FIELDNAME">ubi_3530-PU-006/007</field>
+                        </block>
+                      </value>
+                    </block>
+                  </statement>
+                  <next>
+                    <block type="eventHTMLElem" id="r+9kjtM.!M-s_|pq%N?4">
+                      <field name="EVENT">click</field>
+                      <field name="PARENT">TRUE</field>
+                      <value name="ID">
+                        <shadow type="text" id="PbX,TmfO~lc#Q-!@C:);">
+                          <field name="TEXT">cam-supresor-polvo</field>
+                        </shadow>
+                        <block type="text" id="P=yYi2c@NRIBS1-0gZ|a">
+                          <field name="TEXT">cam-tanque-diario-nahs</field>
+                        </block>
+                      </value>
+                      <statement name="DO">
+                        <block type="procedures_callnoreturn" id="e=eozHePN[iCOCTqEbe(">
+                          <mutation name="setUserPosition">
+                            <arg name="active-cam"/>
+                            <arg name="cam-id"/>
+                            <arg name="operador"/>
+                          </mutation>
+                          <value name="ARG0">
+                            <block type="objectList" id="!%K;m!VMa:90]Le^@3Fv">
+                              <field name="FIELDNAME">Camera_3530-TK-004</field>
+                            </block>
+                          </value>
+                          <value name="ARG1">
+                            <block type="logic_boolean" id="~[x-l(p3_X7isfr?Kc2I">
+                              <field name="BOOL">FALSE</field>
+                            </block>
+                          </value>
+                          <value name="ARG2">
+                            <block type="objectList" id="NAv7O3~fIXYH}`0a0I9S">
+                              <field name="FIELDNAME">ubi_3530-TK-004</field>
+                            </block>
+                          </value>
+                        </block>
+                      </statement>
+                    </block>
+                  </next>
+                </block>
+              </next>
+            </block>
+          </next>
+        </block>
+      </next>
+    </block>
+    <block xmlns="https://developers.google.com/blockly/xml" type="whenClicked" id="UyxLr2-N!0T:s!M3Nm7v" x="3590" y="-1910">
+      <mutation xmlns="http://www.w3.org/1999/xhtml" adveventoptions="false" enableifmissed="false"></mutation>
+      <field name="X_RAY">FALSE</field>
+      <field name="DOUBLE_CLICK">FALSE</field>
+      <field name="LEFT_BUTTON">TRUE</field>
+      <field name="MIDDLE_BUTTON">TRUE</field>
+      <field name="RIGHT_BUTTON">TRUE</field>
+      <value name="VALUE">
+        <shadow type="objectList">
+          <field name="FIELDNAME">&lt;none&gt;</field>
+        </shadow>
+        <block type="objectList" id=".#GIQOVBaSlCkvb(pAi@">
+          <field name="FIELDNAME">ubi_3520-PU-025</field>
+        </block>
+      </value>
+      <statement name="DO">
+        <block type="console.log" id="wvf{D5?yngtZb+_yT#Yv" disabled="true">
+          <value name="VALUE">
+            <shadow type="text" id="(do*DK53,#UX$a*7zXVq">
+              <field name="TEXT">apretando operador colector de polvo</field>
+            </shadow>
+          </value>
+          <next>
+            <block type="procedures_callnoreturn" id="+m+C=:wRPM{i4)CBun].">
+              <mutation name="setUserPosition">
+                <arg name="active-cam"/>
+                <arg name="cam-id"/>
+                <arg name="operador"/>
+              </mutation>
+              <value name="ARG0">
+                <block type="objectList" id="dp.0Ad;-?gKg8%,e#@Ey">
+                  <field name="FIELDNAME">Camera_3520-PU-025</field>
+                </block>
+              </value>
+              <value name="ARG1">
+                <block type="text" id="aajj5do4U5(kbe:#f($;">
+                  <field name="TEXT">operador-bomba-descarga-diesel-planta-molibdeno</field>
+                </block>
+              </value>
+              <value name="ARG2">
+                <block type="objectList" id="4d,gpWG~k6cDDc0:_Z_w">
+                  <field name="FIELDNAME">ubi_3520-PU-025</field>
+                </block>
+              </value>
+            </block>
+          </next>
+        </block>
+      </statement>
+      <next>
+        <block type="whenClicked" id="qGYtkmc3tc,I$D!%JWKN">
+          <mutation xmlns="http://www.w3.org/1999/xhtml" adveventoptions="false" enableifmissed="false"></mutation>
+          <field name="X_RAY">FALSE</field>
+          <field name="DOUBLE_CLICK">FALSE</field>
+          <field name="LEFT_BUTTON">TRUE</field>
+          <field name="MIDDLE_BUTTON">TRUE</field>
+          <field name="RIGHT_BUTTON">TRUE</field>
+          <value name="VALUE">
+            <shadow type="objectList">
+              <field name="FIELDNAME">&lt;none&gt;</field>
+            </shadow>
+            <block type="objectList" id="DuX8*8Py,}.G~ud3q]03">
+              <field name="FIELDNAME">ubi_3530-PU-001</field>
+            </block>
+          </value>
+          <statement name="DO">
+            <block type="console.log" id="q[5Mo*)!=l%++XcT]?Xi" disabled="true">
+              <value name="VALUE">
+                <shadow type="text" id="_!qh=DxHfZthQ1Dz]@Sb">
+                  <field name="TEXT">apretando operador faja alimentadora</field>
+                </shadow>
+              </value>
+              <next>
+                <block type="procedures_callnoreturn" id="#4p[Rz~mZyBJ@0Fhr?@n">
+                  <mutation name="setUserPosition">
+                    <arg name="active-cam"/>
+                    <arg name="cam-id"/>
+                    <arg name="operador"/>
+                  </mutation>
+                  <value name="ARG0">
+                    <block type="objectList" id="D4t~D6SW?/vpYDQ`bI[C">
+                      <field name="FIELDNAME">Camera_3530-PU-001</field>
+                    </block>
+                  </value>
+                  <value name="ARG1">
+                    <block type="text" id="Pw%~dbTqeQqk3,!Uu[xt">
+                      <field name="TEXT">operador-bomba-descarga-nahs</field>
+                    </block>
+                  </value>
+                  <value name="ARG2">
+                    <block type="objectList" id="5uef|6/RgNMD]]0et7G5">
+                      <field name="FIELDNAME">ubi_3530-PU-001</field>
+                    </block>
+                  </value>
+                </block>
+              </next>
+            </block>
+          </statement>
+          <next>
+            <block type="whenClicked" id=".rgx,VS-FC0gzNN5_qoT">
+              <mutation xmlns="http://www.w3.org/1999/xhtml" adveventoptions="false" enableifmissed="false"></mutation>
+              <field name="X_RAY">FALSE</field>
+              <field name="DOUBLE_CLICK">FALSE</field>
+              <field name="LEFT_BUTTON">TRUE</field>
+              <field name="MIDDLE_BUTTON">TRUE</field>
+              <field name="RIGHT_BUTTON">TRUE</field>
+              <value name="VALUE">
+                <shadow type="objectList">
+                  <field name="FIELDNAME">&lt;none&gt;</field>
+                </shadow>
+                <block type="objectList" id="`DxtDYKjX^2UK7hT5[Nz">
+                  <field name="FIELDNAME">ubi_3530-PU-002/003</field>
+                </block>
+              </value>
+              <statement name="DO">
+                <block type="console.log" id=":@?@Wklw=0IR+;AQU{7p" disabled="true">
+                  <value name="VALUE">
+                    <shadow type="text" id="8UMGV{q!IgCkoaF,8Ts]">
+                      <field name="TEXT">apretando operador faja sacrificio</field>
+                    </shadow>
+                  </value>
+                  <next>
+                    <block type="procedures_callnoreturn" id="DD^/;sj]TK)aPO.uUN)T">
+                      <mutation name="setUserPosition">
+                        <arg name="active-cam"/>
+                        <arg name="cam-id"/>
+                        <arg name="operador"/>
+                      </mutation>
+                      <value name="ARG0">
+                        <block type="objectList" id="e|74dyzeY;ao`Kgx}*7J">
+                          <field name="FIELDNAME">Camera_3530-PU-002/003</field>
+                        </block>
+                      </value>
+                      <value name="ARG1">
+                        <block type="text" id="r5{bWKu%6fAb3+g[{~S,">
+                          <field name="TEXT">operador-bomba-transferencia-nahs</field>
+                        </block>
+                      </value>
+                      <value name="ARG2">
+                        <block type="objectList" id="0S_:%7G`%2#WPvlW`^_}">
+                          <field name="FIELDNAME">ubi_3530-PU-002/003</field>
+                        </block>
+                      </value>
+                    </block>
+                  </next>
+                </block>
+              </statement>
+              <next>
+                <block type="whenClicked" id="P2O+Ok!MSvmr/?NnrD;4">
+                  <mutation xmlns="http://www.w3.org/1999/xhtml" adveventoptions="false" enableifmissed="false"></mutation>
+                  <field name="X_RAY">FALSE</field>
+                  <field name="DOUBLE_CLICK">FALSE</field>
+                  <field name="LEFT_BUTTON">TRUE</field>
+                  <field name="MIDDLE_BUTTON">TRUE</field>
+                  <field name="RIGHT_BUTTON">TRUE</field>
+                  <value name="VALUE">
+                    <shadow type="objectList">
+                      <field name="FIELDNAME">&lt;none&gt;</field>
+                    </shadow>
+                    <block type="objectList" id="vTxjn~m-CN{p7b[7sW_/">
+                      <field name="FIELDNAME">ubi_3530-PU-006/007</field>
+                    </block>
+                  </value>
+                  <statement name="DO">
+                    <block type="console.log" id="cj!nuvYkK:1*qXdWZ(EP" disabled="true">
+                      <value name="VALUE">
+                        <shadow type="text" id="QAQPN?D,-{Zmro|@}*EW">
+                          <field name="TEXT">apretando operador pica roca</field>
+                        </shadow>
+                      </value>
+                      <next>
+                        <block type="procedures_callnoreturn" id="9eDWBUB1]eExrH!fN4gj">
+                          <mutation name="setUserPosition">
+                            <arg name="active-cam"/>
+                            <arg name="cam-id"/>
+                            <arg name="operador"/>
+                          </mutation>
+                          <value name="ARG0">
+                            <block type="objectList" id="w-;qZw!02j(`ID%/GUEu">
+                              <field name="FIELDNAME">Camera_3530-PU-006/007</field>
+                            </block>
+                          </value>
+                          <value name="ARG1">
+                            <block type="text" id="oZV*e4Ns:Y(3F5pNg%,`">
+                              <field name="TEXT">operador-bomba-circuito-nahs</field>
+                            </block>
+                          </value>
+                          <value name="ARG2">
+                            <block type="objectList" id="{kPiU1BgtxKNazhF8!T}">
+                              <field name="FIELDNAME">ubi_3530-PU-006/007</field>
+                            </block>
+                          </value>
+                        </block>
+                      </next>
+                    </block>
+                  </statement>
+                  <next>
+                    <block type="whenClicked" id="Av_Q:-;pEVRrBT~Lg~Of">
+                      <mutation xmlns="http://www.w3.org/1999/xhtml" adveventoptions="false" enableifmissed="false"></mutation>
+                      <field name="X_RAY">FALSE</field>
+                      <field name="DOUBLE_CLICK">FALSE</field>
+                      <field name="LEFT_BUTTON">TRUE</field>
+                      <field name="MIDDLE_BUTTON">TRUE</field>
+                      <field name="RIGHT_BUTTON">TRUE</field>
+                      <value name="VALUE">
+                        <shadow type="objectList">
+                          <field name="FIELDNAME">&lt;none&gt;</field>
+                        </shadow>
+                        <block type="objectList" id="{Q|6/)-4-%rJx$vJJ`8V">
+                          <field name="FIELDNAME">ubi_3530-TK-004</field>
+                        </block>
+                      </value>
+                      <statement name="DO">
+                        <block type="console.log" id="E|3SH3j2H%+^0q-vw6-_" disabled="true">
+                          <value name="VALUE">
+                            <shadow type="text" id="bY`;Dt_-e`)),ps;[-S}">
+                              <field name="TEXT">apretando operador supresor polvo</field>
+                            </shadow>
+                          </value>
+                          <next>
+                            <block type="procedures_callnoreturn" id="CKY%lb~2xq3/Fm0t-p+A">
+                              <mutation name="setUserPosition">
+                                <arg name="active-cam"/>
+                                <arg name="cam-id"/>
+                                <arg name="operador"/>
+                              </mutation>
+                              <value name="ARG0">
+                                <block type="objectList" id="#p.15plIV*-UoJ{^iQ0B">
+                                  <field name="FIELDNAME">Camera_3530-TK-004</field>
+                                </block>
+                              </value>
+                              <value name="ARG1">
+                                <block type="text" id="nXN1U,wUy(T:$V6D=LHL">
+                                  <field name="TEXT">operador-tanque-diario-nahs</field>
+                                </block>
+                              </value>
+                              <value name="ARG2">
+                                <block type="objectList" id="{HkZ;5n5GV1JefsDXhjM">
+                                  <field name="FIELDNAME">ubi_3530-TK-004</field>
+                                </block>
+                              </value>
+                            </block>
+                          </next>
+                        </block>
+                      </statement>
+                    </block>
+                  </next>
+                </block>
+              </next>
+            </block>
+          </next>
+        </block>
+      </next>
+    </block>
+    <block xmlns="https://developers.google.com/blockly/xml" type="procedures_defnoreturn" id="]h/xwhz1HTN%2A!K313e" x="-1370" y="-1530">
+      <mutation>
+        <arg name="information_id" varid="=?ZWex*swJ1OYq3:I3)Y"/>
+      </mutation>
+      <field name="NAME">setInformacion</field>
+      <comment pinned="false" h="80" w="160">Describe this function...</comment>
+      <statement name="STACK">
+        <block type="console.log" id="wR$nMJ42*0brrQCv#OOo" disabled="true">
+          <value name="VALUE">
+            <shadow type="text">
+              <field name="TEXT">apretando boton verde 1</field>
+            </shadow>
+            <block type="variables_get" id="m;npp@TzuU6|3uy%R7H$">
+              <field name="VAR" id="=?ZWex*swJ1OYq3:I3)Y">information_id</field>
+            </block>
+          </value>
+          <next>
+            <block type="setHTMLElemAttribute" id="V{htBfsY.{.nq_OjgNh=">
+              <field name="ATTRIBUTE">value</field>
+              <field name="PARENT">TRUE</field>
+              <value name="VALUE">
+                <block type="variables_get" id="5BCM@Vm,QI3h$*X/u:9^">
+                  <field name="VAR" id="=?ZWex*swJ1OYq3:I3)Y">information_id</field>
+                </block>
+              </value>
+              <value name="ID">
+                <shadow type="text">
+                  <field name="TEXT"/>
+                </shadow>
+                <block type="text" id="Gm$!XegS-{)EdztAI5C?">
+                  <field name="TEXT">estado_animacion</field>
+                </block>
+              </value>
+              <next>
+                <block type="callJSFunction" id="4@u^lI){B{Y=TK{l+H-[">
+                  <mutation xmlns="http://www.w3.org/1999/xhtml" name="emitirEstadoAnimacion"></mutation>
+                  <field name="NAME">emitirEstadoAnimacion</field>
+                </block>
+              </next>
+            </block>
+          </next>
+        </block>
+      </statement>
+    </block>
+    <block xmlns="https://developers.google.com/blockly/xml" type="variables_set" id="i~U0-mNT=LqLhJEl|=]O" collapsed="true" x="-1370" y="-1350">
+      <field name="VAR" id="O0fG,[q93rWos2G9)wWt">equipos_3500</field>
+      <value name="VALUE">
+        <block type="lists_create_with" id="^G1+6Gxkj@4,_E]^9:*F">
+          <mutation items="14"/>
+          <value name="ADD0">
+            <block type="objectList" id="xv5qjpXX5aL-V]c{IvSb">
+              <field name="FIELDNAME">ubi_3520-PU-025</field>
+            </block>
+          </value>
+          <value name="ADD1">
+            <block type="objectList" id=":.NQnwSMNS#%ug?]gae*">
+              <field name="FIELDNAME">ubi_3530-PU-001</field>
+            </block>
+          </value>
+          <value name="ADD2">
+            <block type="objectList" id="BkEDv.d1E/K{A^yIh6G*">
+              <field name="FIELDNAME">ubi_3530-PU-002/003</field>
+            </block>
+          </value>
+          <value name="ADD3">
+            <block type="objectList" id="IdVt1TsknhZ`}(1^IdE`">
+              <field name="FIELDNAME">ubi_3530-PU-006/007</field>
+            </block>
+          </value>
+          <value name="ADD4">
+            <block type="objectList" id="6MQ8T$un/Gs#!^l_hneI">
+              <field name="FIELDNAME">ubi_3530-TK-004</field>
+            </block>
+          </value>
+          <value name="ADD5">
+            <block type="objectList" id=":eBFNJP.+$x(uqrWiOKY">
+              <field name="FIELDNAME">inf_3520-PU-025</field>
+            </block>
+          </value>
+          <value name="ADD6">
+            <block type="objectList" id="gd7BkVFQUIvpLh=ge8AB">
+              <field name="FIELDNAME">inf_3520-PU-036</field>
+            </block>
+          </value>
+          <value name="ADD7">
+            <block type="objectList" id="AJ+_Q`hZ;~s8*T3)jQQ~">
+              <field name="FIELDNAME">inf_3520-TK-017</field>
+            </block>
+          </value>
+          <value name="ADD8">
+            <block type="objectList" id="#)r,DQb:pks:+#/hf?K(">
+              <field name="FIELDNAME">inf_3530-PU-001</field>
+            </block>
+          </value>
+          <value name="ADD9">
+            <block type="objectList" id="ZJf9s^IR[rLVFnX^1sE@">
+              <field name="FIELDNAME">inf_3530-PU-002</field>
+            </block>
+          </value>
+          <value name="ADD10">
+            <block type="objectList" id="hYU=1l2Z:GU@yT+NP[1~">
+              <field name="FIELDNAME">inf_3530-PU-003</field>
+            </block>
+          </value>
+          <value name="ADD11">
+            <block type="objectList" id=":o,=R){!K-=:a_EsK.`g">
+              <field name="FIELDNAME">inf_3530-PU-006</field>
+            </block>
+          </value>
+          <value name="ADD12">
+            <block type="objectList" id="T$8h+%PvUn^vnzL-@Dvv">
+              <field name="FIELDNAME">inf_3530-PU-007</field>
+            </block>
+          </value>
+          <value name="ADD13">
+            <block type="objectList" id="oM$QsCoh0;o$/^nx8yJ]">
+              <field name="FIELDNAME">inf_3530-TK-004</field>
+            </block>
+          </value>
+        </block>
+      </value>
+      <next>
+        <block type="variables_set" id="WfY3d=d(0GIa|n4.*{:n" collapsed="true">
+          <field name="VAR" id="P-BwQp00@U$z@@./I3l3">equipos_3400</field>
+          <value name="VALUE">
+            <block type="lists_create_with" id="_Fv[_w=jK}:wVqK$2f|(">
+              <mutation items="25"/>
+              <value name="ADD0">
+                <block type="objectList" id="3KnMK@DO|k9mLU7?)zOf">
+                  <field name="FIELDNAME">ubi_3410-TK-001</field>
+                </block>
+              </value>
+              <value name="ADD1">
+                <block type="objectList" id="3cg-tuY[i/az:eWGd@-k">
+                  <field name="FIELDNAME">ubi_3410-FT-001@005</field>
+                </block>
+              </value>
+              <value name="ADD2">
+                <block type="objectList" id="WA7c7]ezkUvx3(_n(G;,">
+                  <field name="FIELDNAME">ubi_3410-FT-011@014</field>
+                </block>
+              </value>
+              <value name="ADD3">
+                <block type="objectList" id="jbAAUdg0wq6bQ)Se|!a)">
+                  <field name="FIELDNAME">ubi_3410-FT-031/032</field>
+                </block>
+              </value>
+              <value name="ADD4">
+                <block type="objectList" id="i`]jd/-DdTWRQf@QolDb">
+                  <field name="FIELDNAME">ubi_3410-SK-003</field>
+                </block>
+              </value>
+              <value name="ADD5">
+                <block type="objectList" id="-vMX0BKqYQ.W9KYoDG(:">
+                  <field name="FIELDNAME">ubi_3410-TH-001</field>
+                </block>
+              </value>
+              <value name="ADD6">
+                <block type="objectList" id="0{=@UMd|CxL801*M/%h=">
+                  <field name="FIELDNAME">ubi_3410-BH-001</field>
+                </block>
+              </value>
+              <value name="ADD7">
+                <block type="objectList" id="BF{KbamQn5rQ^O*e|h(d">
+                  <field name="FIELDNAME">ubi_3410-FL-001</field>
+                </block>
+              </value>
+              <value name="ADD8">
+                <block type="objectList" id="?{K%^=AlKD1$M]s/EXrq">
+                  <field name="FIELDNAME">ubi_3410-DR-001</field>
+                </block>
+              </value>
+              <value name="ADD9">
+                <block type="objectList" id="mTXTdqG|L#rrm]^tw9QO">
+                  <field name="FIELDNAME">inf_3410-BH-001</field>
+                </block>
+              </value>
+              <value name="ADD10">
+                <block type="objectList" id="*(E-!YakTlv)}eAQS!1$">
+                  <field name="FIELDNAME">inf_3410-BN-001_b</field>
+                </block>
+              </value>
+              <value name="ADD11">
+                <block type="objectList" id="]pSU]=,81c8AJ~(||*kY">
+                  <field name="FIELDNAME">inf_3410-DR-001</field>
+                </block>
+              </value>
+              <value name="ADD12">
+                <block type="objectList" id="T984A3Lg.,IuaB{@~YWu">
+                  <field name="FIELDNAME">inf_3410-FL-001</field>
+                </block>
+              </value>
+              <value name="ADD13">
+                <block type="objectList" id="bf@=HauGgg6I?l!6eO26">
+                  <field name="FIELDNAME">inf_3410-FT-001@005</field>
+                </block>
+              </value>
+              <value name="ADD14">
+                <block type="objectList" id="siFj(-m;9Bw8n!-XBCLm">
+                  <field name="FIELDNAME">inf_3410-FT-006@010</field>
+                </block>
+              </value>
+              <value name="ADD15">
+                <block type="objectList" id="Piy7G@_SUR6Z{-6Pc.4=">
+                  <field name="FIELDNAME">inf_3410-FT-011@014</field>
+                </block>
+              </value>
+              <value name="ADD16">
+                <block type="objectList" id="vc*`*q1O,~aW]3,(T-tg">
+                  <field name="FIELDNAME">inf_3410-FT-015@018</field>
+                </block>
+              </value>
+              <value name="ADD17">
+                <block type="objectList" id="nA,3vj8G=$QsyDG/_D_B">
+                  <field name="FIELDNAME">inf_3410-FT-023@026</field>
+                </block>
+              </value>
+              <value name="ADD18">
+                <block type="objectList" id="eWqF`KNP^D3Eu{?5F{Ky">
+                  <field name="FIELDNAME">inf_3410-FT-027@030</field>
+                </block>
+              </value>
+              <value name="ADD19">
+                <block type="objectList" id="nx4L.+N2lt-5W9aG93i,">
+                  <field name="FIELDNAME">inf_3410-FT-031/032</field>
+                </block>
+              </value>
+              <value name="ADD20">
+                <block type="objectList" id="-5pCQSSsZzsn}e9mb%cN">
+                  <field name="FIELDNAME">inf_3410-FT-031/032_b</field>
+                </block>
+              </value>
+              <value name="ADD21">
+                <block type="objectList" id="P#mu3u8W6tqg9d0U_X@D">
+                  <field name="FIELDNAME">inf_3410-SK-003</field>
+                </block>
+              </value>
+              <value name="ADD22">
+                <block type="objectList" id="HUUU`Ng}E:*bTyqYbwHK">
+                  <field name="FIELDNAME">inf_3410-SK-003_b</field>
+                </block>
+              </value>
+              <value name="ADD23">
+                <block type="objectList" id="BeVgF:Q|+XH$?.0`o*5x">
+                  <field name="FIELDNAME">inf_3410-TH-001</field>
+                </block>
+              </value>
+              <value name="ADD24">
+                <block type="objectList" id="HB;W-EgjGwCflZ}S3dg/">
+                  <field name="FIELDNAME">inf_3410-TK-001</field>
+                </block>
+              </value>
+            </block>
+          </value>
+          <next>
+            <block type="variables_set" id="p[B,7_sWoOyuJ8%[f$K{">
+              <field name="VAR" id="YS:G/h|Cg}[d?nfn9@^w">getParameter</field>
+              <value name="VALUE">
+                <block type="getUrlData" id="toWSzk1|GxAe6(T#Q548">
+                  <field name="KIND">PARAMS</field>
+                  <field name="PARENT">FALSE</field>
+                </block>
+              </value>
+              <next>
+                <block type="console.log" id="#6ub(%gBd;/wUCqnJZiI" disabled="true">
+                  <value name="VALUE">
+                    <shadow type="text" id="ppfFnY^nwUZy`6$_pen+">
+                      <field name="TEXT">Area 3400 get parameter</field>
+                    </shadow>
+                  </value>
+                  <next>
+                    <block type="controls_forEach" id="?%.4+#l.WgCBdL-Z:2n)">
+                      <field name="VAR" id="CNO+8Y30^fg+$eh[9+js">i</field>
+                      <value name="LIST">
+                        <block type="variables_get" id=";WV71`gEJ%qjKVS3UZoc">
+                          <field name="VAR" id="YS:G/h|Cg}[d?nfn9@^w">getParameter</field>
+                        </block>
+                      </value>
+                      <statement name="DO">
+                        <block type="variables_set" id="wmt*,GbOD9Abx7JRe!E0">
+                          <field name="VAR" id="YS:G/h|Cg}[d?nfn9@^w">getParameter</field>
+                          <value name="VALUE">
+                            <block type="variables_get" id="~=[FSU3-^nO_l@Iiv`aB">
+                              <field name="VAR" id="CNO+8Y30^fg+$eh[9+js">i</field>
+                            </block>
+                          </value>
+                        </block>
+                      </statement>
+                      <next>
+                        <block type="controls_if" id="qikm0:BSWdznz)3WQ[[.">
+                          <mutation else="1"/>
+                          <value name="IF0">
+                            <block type="logic_compare" id="M!QEuR_AhR4~C1|ZAm]C">
+                              <field name="OP">EQ</field>
+                              <value name="A">
+                                <block type="variables_get" id="fK`eQP9.i{BxwCfCbbb}">
+                                  <field name="VAR" id="YS:G/h|Cg}[d?nfn9@^w">getParameter</field>
+                                </block>
+                              </value>
+                              <value name="B">
+                                <block type="math_number" id="fB/qHSbDm,{fkSJxr;fV">
+                                  <field name="NUM">3500</field>
+                                </block>
+                              </value>
+                            </block>
+                          </value>
+                          <statement name="DO0">
+                            <block type="console.log" id="Rp3{5qv8hZA4?C@?C}?+" disabled="true">
+                              <value name="VALUE">
+                                <shadow type="text">
+                                  <field name="TEXT">Area 3400 get parameter</field>
+                                </shadow>
+                                <block type="variables_get" id="j2wAxoP?irh/L#.e*AI=">
+                                  <field name="VAR" id="YS:G/h|Cg}[d?nfn9@^w">getParameter</field>
+                                </block>
+                              </value>
+                              <next>
+                                <block type="variables_set" id="PN5g5A!Vj[bae)tg,bt;">
+                                  <field name="VAR" id="Z,u5I-23_@iH_kPXzO6^">operadores-visibles</field>
+                                  <value name="VALUE">
+                                    <block type="lists_create_with" id="vPy|@V*=V9iQ/m/:R=[0">
+                                      <mutation items="5"/>
+                                      <value name="ADD0">
+                                        <block type="objectList" id="/K5or9!=0.IToiH1kfRX">
+                                          <field name="FIELDNAME">ubi_3520-PU-025</field>
+                                        </block>
+                                      </value>
+                                      <value name="ADD1">
+                                        <block type="objectList" id="5Kh)E1*!Z#AbqY1a(FN%">
+                                          <field name="FIELDNAME">ubi_3530-PU-001</field>
+                                        </block>
+                                      </value>
+                                      <value name="ADD2">
+                                        <block type="objectList" id="osNwKLLvbPv5KjFh;3BD">
+                                          <field name="FIELDNAME">ubi_3530-PU-002/003</field>
+                                        </block>
+                                      </value>
+                                      <value name="ADD3">
+                                        <block type="objectList" id="?YMGOn+nQI7Mq+$O(6+=">
+                                          <field name="FIELDNAME">ubi_3530-PU-006/007</field>
+                                        </block>
+                                      </value>
+                                      <value name="ADD4">
+                                        <block type="objectList" id="D4/Nu!Df3]3vC*p.i6C%">
+                                          <field name="FIELDNAME">ubi_3530-TK-004</field>
+                                        </block>
+                                      </value>
+                                    </block>
+                                  </value>
+                                  <next>
+                                    <block type="hide" id="*dC3TMhEMtEEJIO;6.H|">
+                                      <value name="VALUE">
+                                        <shadow type="objectList" id="^/6:,5__yK8L@Iy}!sI1">
+                                          <field name="FIELDNAME">&lt;none&gt;</field>
+                                        </shadow>
+                                        <block type="variables_get" id="ByZdO]4qP%MxZhW[`4FY">
+                                          <field name="VAR" id="P-BwQp00@U$z@@./I3l3">equipos_3400</field>
+                                        </block>
+                                      </value>
+                                    </block>
+                                  </next>
+                                </block>
+                              </next>
+                            </block>
+                          </statement>
+                          <statement name="ELSE">
+                            <block type="console.log" id="0@~ZwO]=]}H+[So$-oTA" disabled="true">
+                              <value name="VALUE">
+                                <shadow type="text" id="ue!E6CWst,RiR`Pw*K0f">
+                                  <field name="TEXT">Area 3400 get parameter</field>
+                                </shadow>
+                              </value>
+                              <next>
+                                <block type="variables_set" id=")/_mm{jeZ#UrcKxOP95i">
+                                  <field name="VAR" id="Z,u5I-23_@iH_kPXzO6^">operadores-visibles</field>
+                                  <value name="VALUE">
+                                    <block type="lists_create_with" id="6Nv=tD7pmIDn}eNAMb.l">
+                                      <mutation items="9"/>
+                                      <value name="ADD0">
+                                        <block type="objectList" id="NhsOpuG$:Ze?j@F#,nSd">
+                                          <field name="FIELDNAME">ubi_3410-TK-001</field>
+                                        </block>
+                                      </value>
+                                      <value name="ADD1">
+                                        <block type="objectList" id="}s-n(N,N^d#e-4f+aAvD">
+                                          <field name="FIELDNAME">ubi_3410-FT-001@005</field>
+                                        </block>
+                                      </value>
+                                      <value name="ADD2">
+                                        <block type="objectList" id="PdoSH$9l4`RR/d-WwqB)">
+                                          <field name="FIELDNAME">ubi_3410-FT-011@014</field>
+                                        </block>
+                                      </value>
+                                      <value name="ADD3">
+                                        <block type="objectList" id="!2Im`^fpEPql$}d+lr?)">
+                                          <field name="FIELDNAME">ubi_3410-FT-031/032</field>
+                                        </block>
+                                      </value>
+                                      <value name="ADD4">
+                                        <block type="objectList" id="a110nsQ4aCxK]xKMiF1y">
+                                          <field name="FIELDNAME">ubi_3410-SK-003</field>
+                                        </block>
+                                      </value>
+                                      <value name="ADD5">
+                                        <block type="objectList" id="I;W:Od63.R,$*?pszZUv">
+                                          <field name="FIELDNAME">ubi_3410-TH-001</field>
+                                        </block>
+                                      </value>
+                                      <value name="ADD6">
+                                        <block type="objectList" id="nN`5CEF4?veP/f}qx-~a">
+                                          <field name="FIELDNAME">ubi_3410-BH-001</field>
+                                        </block>
+                                      </value>
+                                      <value name="ADD7">
+                                        <block type="objectList" id="a|##RIa2P-@YZR#WpLb,">
+                                          <field name="FIELDNAME">ubi_3410-FL-001</field>
+                                        </block>
+                                      </value>
+                                      <value name="ADD8">
+                                        <block type="objectList" id="SDIm?KCD]`~#Tu.*j?pe">
+                                          <field name="FIELDNAME">ubi_3410-DR-001</field>
+                                        </block>
+                                      </value>
+                                    </block>
+                                  </value>
+                                  <next>
+                                    <block type="hide" id="y?^[[(W/DDW`QD:*AA4:">
+                                      <value name="VALUE">
+                                        <shadow type="objectList" id="ivS)0!rVMZa:v:{h{0O*">
+                                          <field name="FIELDNAME">&lt;none&gt;</field>
+                                        </shadow>
+                                        <block type="variables_get" id="^pR,K=IG:w6WFsfgDK:G">
+                                          <field name="VAR" id="O0fG,[q93rWos2G9)wWt">equipos_3500</field>
+                                        </block>
+                                      </value>
+                                    </block>
+                                  </next>
+                                </block>
+                              </next>
+                            </block>
+                          </statement>
+                        </block>
+                      </next>
+                    </block>
+                  </next>
+                </block>
+              </next>
+            </block>
+          </next>
+        </block>
+      </next>
+    </block>
+  </tab>
+  <editorsettings viewport-x="1602" viewport-y="28" viewport-w="300" viewport-h="150" viewport-hidden="false" toolbox-library-mode="true" toolbox-minimized-mode="false"></editorsettings>
+</xml>
