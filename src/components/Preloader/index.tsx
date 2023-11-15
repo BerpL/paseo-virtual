@@ -8,14 +8,15 @@ function VergePreloader() {
   return (
     <Container id="preloader_screen">
       <div>
-      <img style={{color: 'white',
+      <img style={{
 fontSize: '34px',
 textTransform: 'uppercase',
 left: '41%',
 height: '88px',
 overflow: 'hidden',
 top: '33px',
-display: 'block'}} src="assets/imagenes/logo-eduverso-blanco.png"/>
+display: 'block',
+filter: 'brightness(0) invert(1)'}} src="assets/imagenes/logo-quellaveco.png"/>
         <Icon>
           <AiOutlineLoading3Quarters />
         </Icon>

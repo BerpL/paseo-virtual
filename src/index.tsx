@@ -1,6 +1,7 @@
 import React, { StrictMode } from 'react';
 import { render } from 'react-dom';
 import App from './App';
+import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 
 render(
   <StrictMode>
@@ -9,3 +10,4 @@ render(
   document.getElementById('quellaveco')
 );
 
+serviceWorkerRegistration.register();

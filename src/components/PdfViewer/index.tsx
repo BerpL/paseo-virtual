@@ -45,7 +45,7 @@ const PdfViewer: React.FC<PdfViewerProps> = ({ src }) => {
   }, [isMounted])
 
 
-  const onLoadError = useCallback((err) => {
+  const onLoadError = useCallback((err:any) => {
     console.error(err);
   }, [])
 

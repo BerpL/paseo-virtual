@@ -10,8 +10,8 @@ import { Iframe } from "./Iframe";
 import { Help } from "./Help";
 import Hamburger from "./Hamburguer";
 
-const initialTitle = "Eduverso";
-const plantaUrl = "applications/Quellaveco_Molienda/Quellaveco_Molienda.html";
+const initialTitle = "";
+const plantaUrl = "applications/0000General/0000General.html";
 
 const ModelViewer: React.FC = () => {
   const [currentTitle, setCurrentTitle] = useState(initialTitle);
@@ -33,7 +33,7 @@ const ModelViewer: React.FC = () => {
   const [canRenderHamburger, setCanRenderHamburger] = useState(true);
 
   const handleClickArea = useCallback(
-    (key) => {
+    (key:any) => {
       const item = currentItems.find((x) => x.key === key);
       if (!item) return;
       setIdArea(item.id);
@@ -44,6 +44,7 @@ const ModelViewer: React.FC = () => {
       setDisplaySubAreas({ display: "" });
       setCanRenderHamburger(true);
       if (item.vergeUrl) {
+        console.log(item.vergeUrl)
         setVergeUrl(item.vergeUrl);
       }
       setTemp(2);
@@ -52,7 +53,7 @@ const ModelViewer: React.FC = () => {
   );
 
   const handleClickSubAreas = useCallback(
-    (key) => {
+    (key:any) => {
       const item = subAreasCurrentItems.find((x) => x.key === key);
       if (!item) return;
       setCurrentTitle(item.title);
@@ -69,7 +70,7 @@ const ModelViewer: React.FC = () => {
   );
 
   const handleClickSubSubAreas = useCallback(
-    (key) => {
+    (key:any) => {
       const item = subSubAreasItems.find((x) => x.key === key);
       if (!item) return;
       setCanRenderHamburger(true);
@@ -115,9 +116,12 @@ const ModelViewer: React.FC = () => {
   }, []);
 
   const goArea = useCallback(() => {
+    setTimeout(() => {
+      setDisplaySubAreas({ display: "" });
+    }, 2500); // 2000 milisegundos = 2 segundos
     setCanRenderHamburger(true);  
     setCurrentTitle(titleArea);
-    setDisplaySubAreas({ display: "" });
+    /* setDisplaySubAreas({ display: "" }); */
     setShowContextualMenu(false);
     setTemp(2);
   }, [titleArea]);
@@ -147,13 +151,13 @@ const ModelViewer: React.FC = () => {
     return true;
   }, [temp]);
 
-  const handleChangeScene = useCallback((e) => {
+  const handleChangeScene = useCallback((e:any) => {
     // console.log(e)
     setIdEquipo(e.target.value);
     setShowContextualMenu(true);
   }, []);
 
-  const handleChangeBloque = useCallback((e) => {
+  const handleChangeBloque = useCallback((e:any) => {
     var item = subareas.find((x) => x.locationId === e.target.value);
     setShowContextualMenu(false);
     setIdEquipo("");
@@ -178,12 +182,101 @@ const ModelViewer: React.FC = () => {
     const input = document.querySelector("#estado_equipo");
     input?.addEventListener("input", handleChangeBloque);
     return () => input?.removeEventListener("input", handleChangeBloque);
+    enableFullscreen();
   }, [handleChangeBloque]);
 
+  useEffect(()=>{
+    // Agregar el botón al documento
+/* document.body.appendChild(fullscreenButton); */
+    fullscreenButton.addEventListener('click', () => {
+      if (cumpleValidacion) {
+          enableFullscreen();
+      }
+    });
+  })
+
+  
+  // Verificar si el contenido del párrafo tiene más de 2 caracteres
+  const tieneMenosOigualA2Caracteres = initialTitle.length <= 2;
+
+  
+
+  // Validación: Cambia esto a la lógica de tu validación
+const cumpleValidacion = true;
+
+// Función para habilitar el modo pantalla completa
+function enableFullscreen() {
+    const element = document.documentElement as HTMLHtmlElement; // Obtén el elemento raíz (HTML)
+
+    if (element.requestFullscreen) {
+        element.requestFullscreen(); // Para la mayoría de los navegadores
+    } 
+}
+
+// Crear y configurar el botón
+const fullscreenButton = document.createElement('button');
+fullscreenButton.textContent = 'Modo Pantalla Completa';
+fullscreenButton.style.padding = '10px 20px';
+fullscreenButton.style.fontSize = '16px';
+fullscreenButton.style.backgroundColor = '#007bff';
+fullscreenButton.style.color = '#fff';
+fullscreenButton.style.border = 'none';
+fullscreenButton.style.cursor = 'pointer';
+fullscreenButton.style.display = cumpleValidacion ? 'block' : 'none';
+
+
+
+// validar orientacion en horizontal
+useEffect(() => {
+  if (
+    navigator.userAgent.match(/Android/i) ||
+    navigator.userAgent.match(/webOS/i) ||
+    navigator.userAgent.match(/iPhone/i) ||
+    navigator.userAgent.match(/iPad/i) ||
+    navigator.userAgent.match(/iPod/i) ||
+    navigator.userAgent.match(/BlackBerry/i) ||
+    navigator.userAgent.match(/Windows Phone/i)
+  ) {
+    
+    window
+      .matchMedia("(orientation:portrait)")
+      .addEventListener("change", (e: MediaQueryListEvent) => {
+        const portrait: boolean = e.matches;
+        if (portrait) {
+          const horizontalContainer = document.getElementById("horizontalContainer");
+          if (horizontalContainer) {
+            horizontalContainer.style.display = "flex";
+          }
+        } else {
+          const horizontalContainer = document.getElementById("horizontalContainer");
+          if (horizontalContainer) {
+            horizontalContainer.style.display = "none";
+          }
+        }
+      });
+  } else {
+    const horizontalContainer = document.getElementById("horizontalContainer");
+    if (horizontalContainer) {
+      horizontalContainer.style.display = "none";
+    }
+  }
+  
+
+}, []);
+
+
+  
   return (
+    
     <Container>
       <p className="viewer__title">{currentTitle}</p>
-     {/*  <img className="viewer__title" src="/assets/imagenes/logo-eduverso-blanco.png"/> */}
+     {/*  {tieneMenosOigualA2Caracteres &&  <img className="viewer__title" src="/assets/imagenes/logo-eduverso-blanco.png"/>} */}
+    
+      <img  style={{filter: 'brightness(0) invert(1)',
+      display: 'none',
+      top: '1vh',
+      height: '13vh'}} 
+className="viewer__title" src="assets/imagenes/logo-quellaveco.png" id="logo-img"/>
       <div className="viewer__line" />
       <Hamburger
         onClickItem={handleClickHamburger}
@@ -215,7 +308,7 @@ const ModelViewer: React.FC = () => {
       <Iframe url={vergeUrl} title={currentTitle} />
       <Help />
       {canRender && (
-        <button className="viewer__back" id="go-back" onClick={goBack}>
+        <button  style={{display:'none'}} className="viewer__back" id="go-back" onClick={goBack}>
           <MdArrowBack />
           Atras
         </button>
@@ -227,7 +320,7 @@ const ModelViewer: React.FC = () => {
       )}
       {canRender && (
         <button className="viewer__area" id="go-area" onClick={goArea}>
-          {titleArea}
+          Retornar
         </button>
       )}
       <ContextualMenu
@@ -236,7 +329,46 @@ const ModelViewer: React.FC = () => {
         onClose={() => setShowContextualMenu(false)}
         id={idEquipo}
       />
+      <div className="button-iniciar" id="btn_empezar_recorrido_0">
+        Iniciar recorrido
+      </div>
+      <div className="button-iniciar" id="btn_empezar_recorrido_1">
+        Iniciar recorrido
+      </div>
+      <div className="button-iniciar" id="btn_empezar_recorrido_2">
+        Iniciar recorrido
+      </div>
+      <div className="button-iniciar" id="btn_empezar_recorrido_3">
+        Iniciar recorrido
+      </div>
+      <div className="button-iniciar" id="btn_empezar_recorrido_4">
+        Iniciar recorrido
+      </div>
+      <div className="button-iniciar" id="btn_empezar_recorrido_5">
+        Iniciar recorrido
+      </div>
+      <div className="button-iniciar" id="btn_empezar_recorrido_6">
+        Iniciar recorrido
+      </div>
+      <div id="horizontalContainer" className="container-mb-horizontal center-mb-horizontal" style={{ display: 'none', width:'100vw',height:'100vh',margin:'auto',top: '0',left:'0',background:'#5d5555ba',position:'absolute',zIndex: 60,color:'white',justifyContent:'center', alignItems:'center'}}>
+      <span style={{fontSize:'3vh', margin:'0 7vh', textAlign:'center', lineHeight:'4vh', fontWeight:'bold'}}>
+        Pon tu celular en posición horizontal para poder acceder a la experiencia
+        <br />
+        <img
+          style={{
+            width: '13vh',
+            filter: 'invert(1)',
+            margin: '3vh auto',
+          }}
+          src="https://cdn.discordapp.com/attachments/890813923136249867/1148495611373568020/horizontal-icono.png"
+          alt="Icono horizontal"
+          />
+      </span>
+    </div>
+
+
     </Container>
+   
   );
 };
 

@@ -16,7 +16,7 @@ export const Container = styled.div`
     transition: all 0.3s ease;
   }
 
-  @media only screen and (max-width: 730px) {
+  /* @media only screen and (max-width: 730px) {
     display: flex;
   }
   @media only screen and (max-width: 500px) {
@@ -25,5 +25,5 @@ export const Container = styled.div`
   }
   @media only screen and (max-width: 370px) {
     top: 90px;
-  }
+  } */
 `;

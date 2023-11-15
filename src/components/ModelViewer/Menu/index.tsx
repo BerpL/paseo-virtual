@@ -29,7 +29,7 @@ export interface MenuItemProps {
 
 const MenuItem: React.FC<MenuItemProps> = ({ item, onClickItem, idArea }) => {
 
-  const handleClickItem = useCallback((key) => () => {
+  const handleClickItem = useCallback((key:any) => () => {
     onClickItem(key);
   }, [onClickItem])
 
