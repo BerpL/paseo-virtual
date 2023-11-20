@@ -428,7 +428,7 @@ const files = [
   '/applications/imagenes/5000/5000 TANQUE DE AGUA FRESCA.png',
   '/applications/imagenes/5000/5000 TANQUE DE AGUA POTABLE.png',
   '/applications/imagenes/5000/5000 TANQUE DE AGUA PROCESO RED DE INCENDIO.png',
-  '/applications/imagenes/5000/5000 AREA5800_R.png',
+  '/applications/imagenes/5000/AREA5800_R.png',
   '/applications/5000Puerto/Amarillo_ML.jpg',
   '/applications/5000Puerto/Azul10.jpg',
   '/applications/5000Puerto/Concreto_Q.jpg',
